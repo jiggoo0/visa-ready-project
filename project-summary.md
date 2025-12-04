@@ -1,9 +1,18 @@
 # 📑 Project Summary Report
-_Generated on Thu Dec  4 14:48:22 +07 2025_
+_Generated on Thu Dec  4 18:32:52 +07 2025_
 
 
 ## ⚙️ Environment Variables
-⚠️ `.env` not found. Cannot include environment context.
+📄 Reading `.env` (Sensitive values masked for AI prompt):
+
+- `NEXT_PUBLIC_SUPABASE_ANON_KEY` = `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRwZ21mYm56eWhuaHd6eW96b3hlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjQ1MzA0ODAsImV4cCI6MjA4MDEwNjQ4MH0.xKt-T4GUASSrwoJq47sbl-TDMDINGgPdG3V3GswzX1M`
+- `POSTGRES_PASSWORD` = `Aem25217`
+- `POSTGRES_PRISMA_URL` = `postgres://postgres.dpgmfbnzyhnhwzyozoxe:Aem25217@aws-1-ap-southeast-1.pooler.supabase.com:6543/postgres?sslmode=require&pgbouncer=true`
+- `POSTGRES_URL` = `postgres://postgres.dpgmfbnzyhnhwzyozoxe:Aem25217@aws-1-ap-southeast-1.pooler.supabase.com:6543/postgres?sslmode=require&supa=base-pooler.x`
+- `POSTGRES_URL_NON_POOLING` = `postgres://postgres.dpgmfbnzyhnhwzyozoxe:Aem25217@aws-1-ap-southeast-1.pooler.supabase.com:5432/postgres?sslmode=require`
+- `NEXT_PUBLIC_SUPABASE_ANON_KEY` = `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRwZ21mYm56eWhuaHd6eW96b3hlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjQ1MzA0ODAsImV4cCI6MjA4MDEwNjQ4MH0.xKt-T4GUASSrwoJq47sbl-TDMDINGgPdG3V3GswzX1M`
+- `SUPABASE_JWT_SECRET` = `m+MQFo5KOE4wA8dGmQ+vYSI7P4kKYvNxUYW5jggbOb9PHQ0f5tLxmt6tNtEqTzSqkZl8OonnjR//GPzbVyCsdA==`
+- `SUPABASE_SERVICE_ROLE_KEY` = `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRwZ21mYm56eWhuaHd6eW96b3hlIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc2NDUzMDQ4MCwiZXhwIjoyMDgwMTA2NDgwfQ.KaisYMSEhw5mxx5Drhow9j-1Vqmat4nFkd2_fY6_OZA`
 
 ## 📁 Folder Overview (Max Depth: 3)
 
@@ -17,9 +26,13 @@ app
 │   └── page.tsx
 ├── faq
 │   └── page.tsx
+├── flight-checkout
+│   └── page.tsx
 ├── flight-doc-preview
 │   └── page.tsx
 ├── globals.css
+├── hotel-checkout
+│   └── page.tsx
 ├── hotel-doc-preview
 │   └── page.tsx
 ├── how-to
@@ -32,12 +45,10 @@ app
 │   └── page.tsx
 ├── samples
 │   └── page.tsx
-├── services
-│   └── page.tsx
-└── visa-doc-preview
+└── services
     └── page.tsx
 
-13 directories, 15 files
+14 directories, 16 files
 
 ### components
 components
@@ -59,10 +70,11 @@ components
 lib
 ├── generateTicket.ts
 ├── helpers.ts
+├── orderService.ts
 ├── pdfGenerator.ts
 └── supabaseClient.ts
 
-1 directory, 4 files
+1 directory, 5 files
 
 ### public
 public
@@ -78,41 +90,47 @@ scripts
 
 1 directory, 1 file
 
+### data
+data
+└── servicesData.ts
+
+1 directory, 1 file
+
 ## 👀 Code Preview & Coverage (JS/TS)
 
 ### `./app/services/page.tsx`
 
 ```js
-// app/services/page.tsx
 'use client';
 
 import React from 'react';
 import ServiceCard from '@/components/ServiceCard';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import { servicesData } from '@/data/servicesData'; // ✅ Import data
+import Link from 'next/link';
 
-import { Plane, Hotel, PlaneTakeoff, BookOpenCheck } from 'lucide-react';
-import type { LucideProps } from 'lucide-react';
-import type { ForwardRefExoticComponent, RefAttributes } from 'react';
+const ServicesPage: React.FC = () => {
+  // กำหนดสีหลัก
+  const primaryGreen = 'border-emerald-500';
 
-// Type สำหรับ Icon Component (LucideIcon)
-type LucideIconType = ForwardRefExoticComponent<
-  Omit<LucideProps, 'ref'> & RefAttributes<SVGSVGElement>
->;
+  return (
+    <div className="min-h-screen flex flex-col bg-gray-50">
+      <Header />
 
-// ข้อมูลจำลองสำหรับบริการ
-interface ServiceItem {
-  id: number;
-  title: string;
-  description: string;
-  icon: LucideIconType;
-  linkHref: string;
-  priceText: string;
-  isPopular: boolean;
-}
+      <main className="flex-grow pt-16 pb-24">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Header Section */}
+          <div className="text-center mb-16 pt-8">
+            <h1 className="text-4xl sm:text-5xl font-extrabold text-gray-900 mb-4 tracking-tight">
+              แพ็กเกจเอกสารยื่นวีซ่าที่เชื่อถือได้
+            </h1>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              เลือกบริการที่เหมาะสมกับความต้องการยื่นวีซ่าของคุณ
+              ทุกเอกสารออกแบบมาเพื่อผ่านการตรวจสอบของสถานทูต
+            </p>
+          </div>
 
-const servicesData: ServiceItem[] = [
-  {
 
 ```
 
@@ -195,17 +213,23 @@ const STEPS: Step[] = [
 
 ```js
 // app/pricing/page.tsx
+'use client';
+
 import React from 'react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import PricingCard from '@/components/PricingCard';
 
+/* =============================
+   Types
+============================= */
 interface FeatureItem {
   name: string;
   isAvailable: boolean;
 }
 
 interface PricingPlan {
+  id: number;
   title: string;
   description: string;
   price: number;
@@ -216,14 +240,8 @@ interface PricingPlan {
   isRecommended?: boolean;
 }
 
-const pricingData: PricingPlan[] = [
-  {
-    title: "Flight Starter",
-    description: "สำหรับผู้ที่ต้องการเพียงเอกสารตั๋วเครื่องบินเท่านั้น",
-    price: 299,
-    currency: "THB",
-    features: [
-      { name: "ตั๋วเครื่องบิน", isAvailable: true },
+/* =============================
+   Pricing Data
 
 ```
 
@@ -308,33 +326,33 @@ let db: any;
 import './globals.css';
 import { Inter } from 'next/font/google';
 import type { Metadata } from 'next';
-import Widget from '@/components/Widget'; // ✅ Import Widget
+import Widget from '@/components/Widget'; // ✅ Widget แสดงทุกหน้า
 
-// โหลด Font Inter
-const inter = Inter({ subsets: ['latin'] });
+/* =============================
+   Font
+============================= */
+const inter = Inter({
+  subsets: ['latin'],
+  display: 'swap', // ปรับให้โหลดเร็วขึ้น
+});
 
-// กำหนด Metadata สำหรับ SEO
+/* =============================
+   Metadata (SEO)
+============================= */
 export const metadata: Metadata = {
+  // Title Template สำหรับหน้าย่อย
   title: {
-    default: 'Visa-Ready: เอกสารวีซ่าพร้อมยื่น | Flight & Hotel Itinerary',
+    default: 'Visa-Ready: เอกสารวีซ่าพร้อมยื่น | Flight & Hotel Itinerary Generator',
     template: '%s | Visa-Ready',
   },
+  // คำอธิบาย
   description:
     'สร้างตั๋วเครื่องบินและโรงแรมสำหรับการยื่นวีซ่าเชงเก้น ญี่ปุ่น สหรัฐอเมริกา และประเทศอื่น ๆ ได้อย่างรวดเร็ว แม่นยำ และน่าเชื่อถือ',
+  // Keywords
   keywords: [
     'วีซ่า',
     'เชงเก้น',
-    'ตั๋วเครื่องบิน',
-    'จองโรงแรม',
-    'Visa application documents',
-    'Itinerary',
-  ],
-  openGraph: {
-    title: 'Visa-Ready: เอกสารวีซ่าพร้อมยื่น',
-    description: 'สร้างเอกสารสำหรับการยื่นวีซ่าที่เชื่อถือได้',
-    url: 'https://visaready.com', // TODO: เปลี่ยนเป็น URL จริง
-    siteName: 'Visa-Ready',
-    locale: 'th_TH',
+    'ตั๋วเครื่องบินปลอม',
 
 ```
 
@@ -342,8 +360,10 @@ export const metadata: Metadata = {
 ### `./app/page.tsx`
 
 ```js
-// app/page.tsx
+'use client';
+
 import React from 'react';
+// 💡 ใช้ Absolute Imports เพื่อความสะอาดของโค้ด
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import Hero from '@/components/Hero';
@@ -351,27 +371,25 @@ import ServiceCard from '@/components/ServiceCard';
 import ReviewSlider from '@/components/ReviewSlider';
 import About from '@/components/About';
 
-import { Plane, Hotel, PlaneTakeoff, type LucideProps } from 'lucide-react';
-import type { ForwardRefExoticComponent, RefAttributes } from 'react';
+import { servicesData } from '@/data/servicesData'; // ข้อมูลบริการ
 
 /* =============================
-   Types
+   Page Component
 ============================= */
-type LucideIconType = ForwardRefExoticComponent<
-  Omit<LucideProps, 'ref'> & RefAttributes<SVGSVGElement>
->;
+const HomePage: React.FC = () => {
+  // เลือกเฉพาะบริการที่ต้องการแสดงบนหน้าแรก (เช่น 3 รายการแรก)
+  const homeServicesData = servicesData.slice(0, 3);
 
-interface ServiceItem {
-  id: number;
-  title: string;
-  description: string;
-  icon: LucideIconType;
-  linkHref: string;
-  priceText: string;
-  isPopular: boolean;
-}
+  // กำหนดสีหลัก
+  const primaryGreen = 'bg-emerald-600';
 
-/* =============================
+  return (
+    // กำหนด layout พื้นฐานสำหรับ mobile-first
+    <div className="min-h-screen flex flex-col bg-gray-50 font-inter antialiased">
+      <Header />
+
+      <main className="flex-grow">
+        {/* Hero Section */}
 
 ```
 
@@ -381,71 +399,71 @@ interface ServiceItem {
 ```js
 'use client';
 
-import React, { useState, useEffect, Suspense } from 'react'; // 💡 เพิ่ม Suspense
+import React, { useState, useEffect, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { Plane, Hotel, CheckCircle2, CreditCard, Loader2, ArrowLeft } from 'lucide-react';
 import Link from 'next/link';
 
-// ข้อมูลแผนบริการและราคา
+// 💡 Import the order creation function (mocked service)
+import { createPurchaseOrder } from '../../lib/orderService';
+
+/* =============================
+   Constants & Configuration
+============================= */
+// Data for pricing plans
 const PricingData = {
-    flight: { name: 'ตั๋วเครื่องบินเดี่ยว', price: 590, icon: Plane },
-    hotel: { name: 'โรงแรมเดี่ยว', price: 490, icon: Hotel },
-    bundle: { name: 'แพ็กเกจคู่ (ตั๋ว+โรงแรม)', price: 990, icon: CheckCircle2 },
+    flight: { name: 'ตั๋วเครื่องบินเดี่ยว', price: 590, icon: Plane, docType: 'flight-doc-preview' },
+    hotel: { name: 'โรงแรมเดี่ยว', price: 490, icon: Hotel, docType: 'hotel-doc-preview' },
+    bundle: { name: 'แพ็กเกจคู่ (ตั๋ว+โรงแรม)', price: 990, icon: CheckCircle2, docType: 'dual-package-preview' },
 };
 
-// ข้อมูลสำหรับ Service (ใช้ในกรณีที่ลิงก์มาจาก /services โดยไม่มี plan)
+// Data for services (fallback if plan is not set)
 const ServiceData = {
     flight: PricingData.flight,
     hotel: PricingData.hotel,
 };
 
-// ประเภทข้อมูลที่ใช้แสดงในหน้าสรุป
+// Types
 interface ItemDetail {
     name: string;
     price: number;
-    icon: React.ElementType;
-}
-
-// 1. คอมโพเนนต์ที่ใช้ Client Hook (useSearchParams) ซึ่งจะต้องอยู่ภายใน Suspense
-function CheckoutLogic() {
-    // 🟢 useSearchParams ถูกเรียกภายในคอมโพเนนต์ที่อยู่ภายใต้ Suspense
 
 ```
 
 
-### `./app/visa-doc-preview/page.tsx`
+### `./app/flight-checkout/page.tsx`
 
 ```js
-// app/visa-doc-preview/page.tsx
 'use client';
 
-import React from 'react';
-// 💡 เพิ่มการ Import Header และ Footer
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
+import React, { useState, useCallback, useMemo } from 'react';
+import { Plane, Calendar, User, Airfoil, MapPin, Search, MessageSquare, CheckCircle } from 'lucide-react'; // เพิ่ม MessageSquare
 
-// Interface ยังคงอยู่เพื่อใช้สำหรับการกำหนด Type (Type Checking) ภายใน
-interface VisaDocPreviewProps {
-  hotelName?: string;
-  address?: string;
-  phone?: string;
-  email?: string;
-  vatId?: string;
-  bookingRef?: string;
-  status?: string;
-  guestName?: string;
-  passport?: string;
-  contact?: string;
-  guests?: string;
-  bookingDate?: string;
-  checkin?: string;
-  checkout?: string;
-  nights?: string;
-  roomType?: string;
-  totalPrice?: string;
-  paymentStatus?: string;
-  cancellationPolicy?: string;
-  issuedDate?: string;
+/* =================================================================
+   MOCK COMPONENTS: Header, Footer, and Interfaces
+   (MANDATORY: All components must be in a single file)
+================================================================= */
+
+// Mock Header (Minimal for document structure)
+const Header = () => (
+  <header className="sticky top-0 z-10 bg-white shadow-md">
+    <div className="max-w-7xl mx-auto py-4 px-4 sm:px-6 lg:px-8 flex justify-between items-center">
+      <h1 className="text-2xl font-extrabold text-emerald-600 flex items-center">
+        <Airfoil className="w-6 h-6 mr-2" /> Visa Doc Generator
+      </h1>
+    </div>
+  </header>
+);
+
+// Mock Footer (Minimal for document structure)
+const Footer = () => (
+  <footer className="bg-gray-800 text-white py-4 text-center text-sm">
+    &copy; 2025 Visa Document Service. All Rights Reserved.
+  </footer>
+);
+
+interface FlightInfo {
+  flightNumber: string;
 
 ```
 
@@ -598,6 +616,43 @@ export default function LetterServicePage() {
 ```
 
 
+### `./app/hotel-checkout/page.tsx`
+
+```js
+'use client';
+
+import React, { useState, useMemo } from 'react';
+import { Bed, Calendar, User, Mail, Search, MessageSquare, MapPin } from 'lucide-react';
+
+/* =================================================================
+   MOCK COMPONENTS: Header, Footer, and Interfaces
+================================================================= */
+
+// Mock Header (Minimal for document structure)
+const Header = () => (
+  <header className="sticky top-0 z-10 bg-white shadow-md">
+    <div className="max-w-7xl mx-auto py-4 px-4 sm:px-6 lg:px-8 flex justify-between items-center">
+      <h1 className="text-2xl font-extrabold text-indigo-600 flex items-center">
+        <Bed className="w-6 h-6 mr-2" /> Visa Doc Generator
+      </h1>
+    </div>
+  </header>
+);
+
+// Mock Footer (Minimal for document structure)
+const Footer = () => (
+  <footer className="bg-gray-800 text-white py-4 text-center text-sm">
+    &copy; 2025 Visa Document Service. All Rights Reserved.
+  </footer>
+);
+
+interface HotelDocPreviewProps {
+  hotelName: string;
+  address: string;
+
+```
+
+
 ### `./components/Header.tsx`
 
 ```js
@@ -675,36 +730,36 @@ const footerLinks = [
 ### `./components/ServiceCard.tsx`
 
 ```js
-// components/ServiceCard.tsx
+'use client';
+
 import React from 'react';
 import Link from 'next/link';
-import { ArrowRight, type LucideProps } from 'lucide-react';
+import { ArrowRight, Zap, Tag, type LucideProps, CheckCircle, Plane, Hotel } from 'lucide-react';
 import type { ForwardRefExoticComponent, RefAttributes } from 'react';
 
 /* =============================
    Types
 ============================= */
+// ประเภทสำหรับ Lucide Icon (ใช้งานง่ายขึ้น)
 type LucideIconType = ForwardRefExoticComponent<
   Omit<LucideProps, 'ref'> & RefAttributes<SVGSVGElement>
 >;
 
+// โครงสร้างสำหรับ Price Options
+interface PriceOptions {
+  normal: string;
+  promo?: string;
+  urgent?: string;
+}
+
+// Props สำหรับ ServiceCard
 interface ServiceCardProps {
   title: string;
   description: string;
   icon: LucideIconType;
-  linkHref: string;
-  priceText: string;
-  isPopular?: boolean;
-}
-
-/* =============================
-   Component
-============================= */
-const ServiceCard: React.FC<ServiceCardProps> = ({
-  title,
-  description,
-  icon: Icon,
-  linkHref,
+  /** 💡 แก้ไข: linkHref ในที่นี้ควรส่งค่า Plan ID (เช่น 'flight', 'bundle') เพื่อใช้สร้างลิงก์ checkout */
+  linkHref: string; 
+  /** รองรับทั้งราคาเดียว หรือหลายระดับ */
 
 ```
 
@@ -712,36 +767,36 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
 ### `./components/PricingCard.tsx`
 
 ```js
-// components/PricingCard.tsx
+'use client';
+
 import React from 'react';
 import Link from 'next/link';
-import { CheckCircle } from 'lucide-react';
+import { CheckCircle, XCircle } from 'lucide-react';
+
+/* =============================
+   Types
+============================= */
+interface FeatureItem {
+  name: string;
+  isAvailable: boolean;
+}
 
 interface PricingCardProps {
   title: string;
   description: string;
   price: number;
   currency?: 'THB' | 'USD' | 'EUR';
-  features: string[];
-  linkHref?: string;
+  features: FeatureItem[];
+  /** 💡 แก้ไข: linkHref ในที่นี้ควรส่งค่า Plan ID (เช่น 'flight', 'bundle') เพื่อใช้สร้างลิงก์ checkout */
+  linkHref: string; 
   buttonText: string;
   isRecommended?: boolean;
 }
 
-const formatPrice = (price: number, currency: string) => {
-  switch (currency) {
-    case 'USD':
-      return `$${price}`;
-    case 'EUR':
-      return `€${price}`;
-    case 'THB':
-    default:
-      return `฿${price}`;
-  }
-};
-
-const PricingCard: React.FC<PricingCardProps> = ({
-  title,
+/* =============================
+   Helper
+============================= */
+/**
 
 ```
 
@@ -788,34 +843,34 @@ export default function FAQItem({ question, answer }: FAQItemProps) {
 ```js
 'use client';
 
-import React, { useState, useEffect } from 'react';
-import { generateDocumentPDF } from '../lib/pdfGenerator';
-import { AlertTriangle, FileText, Download } from 'lucide-react';
+import React, { useState, useEffect, useMemo } from 'react';
+// 💡 เปลี่ยนเป็น Absolute Import
+import { generateDocumentPDF } from '@/lib/pdfGenerator'; 
+import { AlertTriangle, FileText, Download, Loader2 } from 'lucide-react';
 
+/* =============================
+   Types
+============================= */
 interface DocumentData {
-  type: 'FLIGHT' | 'HOTEL';
+  type: 'FLIGHT' | 'HOTEL' | 'DUAL';
   title: string;
   applicantName: string;
-  details: string[];
+  details: string[]; // รายละเอียด Mock up
 }
 
 interface PDFPreviewProps {
   data: DocumentData;
 }
 
-export default function PDFPreview({ data }: PDFPreviewProps) {
-  const [pdfUrl, setPdfUrl] = useState<string | null>(null);
-  const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
+/* =============================
+   Color Mapping
+============================= */
+const primaryGreen = 'emerald-600';
+const accentGold = 'yellow-500';
 
-  useEffect(() => {
-    // รันเฉพาะฝั่ง Client
-    if (typeof window === 'undefined') return;
-
-    const createPdf = async () => {
-      setIsLoading(true);
-      setError(null);
-      setPdfUrl(null);
+/* =============================
+   Component
+============================= */
 
 ```
 
@@ -1119,10 +1174,12 @@ export function formatDateForDisplay(dateString: string): string {
 ### `./lib/pdfGenerator.ts`
 
 ```js
+// ต้องติดตั้ง pdf-lib ในโปรเจกต์: npm install pdf-lib
 import { PDFDocument, rgb, StandardFonts, degrees } from 'pdf-lib';
 
+// โครงสร้างข้อมูลที่ใช้ในการสร้างเอกสาร
 export interface DocumentData {
-  type: 'FLIGHT' | 'HOTEL';
+  type: 'FLIGHT' | 'HOTEL' | 'PACKAGE'; // เพิ่ม PACKAGE เพื่อให้ครอบคลุม
   title: string;
   applicantName: string;
   details: string[]; // List of key-value details
@@ -1131,13 +1188,13 @@ export interface DocumentData {
 /**
  * Generates a PDF with a watermark and sample content for visa application purposes.
  * @param data Document data to populate the PDF.
- * @returns Base64 encoded PDF string
+ * @returns Promise<Uint8Array> PDF bytes (Uint8Array)
  */
-export async function generateDocumentPDF(data: DocumentData): Promise<string> {
+export async function generatePDF(data: DocumentData): Promise<Uint8Array> {
   // Create a new PDF document
   const pdfDoc = await PDFDocument.create();
 
-  // Embed a standard font (Helvetica). สำหรับ production อาจพิจารณาฟอนต์ที่รองรับภาษาไทย
+  // Embed a standard font (Helvetica).
   const font = await pdfDoc.embedFont(StandardFonts.Helvetica);
 
   // Add a single page
@@ -1147,15 +1204,50 @@ export async function generateDocumentPDF(data: DocumentData): Promise<string> {
 
   // --- Watermark (Security / Disclaimer) ---
   const watermarkText = 'FOR VISA ONLY - NOT A REAL BOOKING';
-  page.drawText(watermarkText, {
-    x: width / 2 - 250,
+
+```
+
+
+### `./lib/orderService.ts`
+
+```js
+import { generatePDF, DocumentData } from './pdfGenerator';
+
+// โครงสร้างข้อมูลสำหรับลูกค้า
+interface CustomerInfo {
+  name: string;
+  email: string;
+  passport?: string;
+  travelDates?: string;
+}
+
+// โครงสร้างข้อมูลสำหรับรายการสินค้า
+interface OrderItem {
+  itemId: string;
+  description: string;
+  quantity: number;
+  unitPrice: number;
+  total: number;
+  docType: string; // ประเภทของเอกสารที่ต้องสร้าง
+}
+
+// โครงสร้างข้อมูลใบสั่งซื้อ
+interface Order {
+  orderId: string;
+  issueDate: string;
+  status: 'AWAITING_PAYMENT' | 'PAID' | 'COMPLETED' | 'CANCELLED';
+  customer: CustomerInfo;
+  items: OrderItem[];
+  totalAmount: number;
+}
+
 
 ```
 
 
 ---
-> **Total JS/TS files:** 29
-> **Files previewed:** 29
+> **Total JS/TS files:** 31
+> **Files previewed:** 31
 > **Files with Role/Auth checks:** 0
 > **Files using Absolute Imports:** 0
 
@@ -1198,9 +1290,9 @@ You are an expert AI coding assistant. Your task is to analyze the provided Proj
 
 | Metric | Total | Covered | Coverage % | Weight |
 | :--- | :---: | :---: | :---: | :---: |
-| **Code Preview** | 29 | 29 | 100% | 2 |
-| **Role/Auth Checks** | 29 | 0 | 0% | 3 |
-| **Absolute Imports** | 29 | 0 | 0% | 1 |
+| **Code Preview** | 31 | 31 | 100% | 2 |
+| **Role/Auth Checks** | 31 | 0 | 0% | 3 |
+| **Absolute Imports** | 31 | 0 | 0% | 1 |
 | **Valid JSON** | 0 | 0 | 100% | 2 |
 | **Readable CSV** | 0 | 0 | 100% | 1 |
 

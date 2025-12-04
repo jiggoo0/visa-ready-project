@@ -1,16 +1,14 @@
 {
   "/_not-found/page": "/_not-found",
-  "/contact/page": "/contact",
-  "/checkout/page": "/checkout",
   "/dual-package-preview/page": "/dual-package-preview",
+  "/contact/page": "/contact",
   "/faq/page": "/faq",
-  "/flight-doc-preview/page": "/flight-doc-preview",
-  "/hotel-doc-preview/page": "/hotel-doc-preview",
+  "/flight-checkout/page": "/flight-checkout",
+  "/hotel-checkout/page": "/hotel-checkout",
   "/how-to/page": "/how-to",
-  "/letter-service/page": "/letter-service",
   "/page": "/",
+  "/letter-service/page": "/letter-service",
   "/pricing/page": "/pricing",
   "/samples/page": "/samples",
-  "/services/page": "/services",
-  "/visa-doc-preview/page": "/visa-doc-preview"
+  "/services/page": "/services"
 }

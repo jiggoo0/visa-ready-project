@@ -1,7 +1,9 @@
+// ต้องติดตั้ง pdf-lib ในโปรเจกต์: npm install pdf-lib
 import { PDFDocument, rgb, StandardFonts, degrees } from 'pdf-lib';
 
+// โครงสร้างข้อมูลที่ใช้ในการสร้างเอกสาร
 export interface DocumentData {
-  type: 'FLIGHT' | 'HOTEL';
+  type: 'FLIGHT' | 'HOTEL' | 'PACKAGE'; // เพิ่ม PACKAGE เพื่อให้ครอบคลุม
   title: string;
   applicantName: string;
   details: string[]; // List of key-value details
@@ -10,13 +12,13 @@ export interface DocumentData {
 /**
  * Generates a PDF with a watermark and sample content for visa application purposes.
  * @param data Document data to populate the PDF.
- * @returns Base64 encoded PDF string
+ * @returns Promise<Uint8Array> PDF bytes (Uint8Array)
  */
-export async function generateDocumentPDF(data: DocumentData): Promise<string> {
+export async function generatePDF(data: DocumentData): Promise<Uint8Array> {
   // Create a new PDF document
   const pdfDoc = await PDFDocument.create();
 
-  // Embed a standard font (Helvetica). สำหรับ production อาจพิจารณาฟอนต์ที่รองรับภาษาไทย
+  // Embed a standard font (Helvetica).
   const font = await pdfDoc.embedFont(StandardFonts.Helvetica);
 
   // Add a single page
@@ -58,6 +60,7 @@ export async function generateDocumentPDF(data: DocumentData): Promise<string> {
   yPosition -= 30;
 
   // --- Details ---
+  // ใช้พื้นที่ประมาณ 20px ต่อบรรทัด
   data.details.forEach((detail, index) => {
     page.drawText(`- ${detail}`, {
       x: 60,
@@ -67,8 +70,12 @@ export async function generateDocumentPDF(data: DocumentData): Promise<string> {
       color: rgb(0.3, 0.3, 0.3),
     });
   });
+  
+  // Update yPosition สำหรับ Disclaimer ด้านล่าง
+  yPosition -= data.details.length * 20 + 30;
 
-  // --- Footer Disclaimer ---
+
+  // --- Footer Disclaimer (Static) ---
   page.drawText(
     'Disclaimer: This is a DUMMY document for visa application purposes only. ' +
       'It holds no reservation value and cannot be used for actual travel.',
@@ -81,7 +88,7 @@ export async function generateDocumentPDF(data: DocumentData): Promise<string> {
     }
   );
 
-  // Save PDF and convert to Base64
+  // Save PDF and return Uint8Array
   const pdfBytes = await pdfDoc.save();
-  return Buffer.from(pdfBytes).toString('base64');
+  return pdfBytes;
 }

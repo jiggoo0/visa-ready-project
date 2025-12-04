@@ -33,12 +33,6 @@
       "namedRegex": "^/_not\\-found(?:/)?$"
     },
     {
-      "page": "/checkout",
-      "regex": "^/checkout(?:/)?$",
-      "routeKeys": {},
-      "namedRegex": "^/checkout(?:/)?$"
-    },
-    {
       "page": "/contact",
       "regex": "^/contact(?:/)?$",
       "routeKeys": {},
@@ -57,16 +51,16 @@
       "namedRegex": "^/faq(?:/)?$"
     },
     {
-      "page": "/flight-doc-preview",
-      "regex": "^/flight\\-doc\\-preview(?:/)?$",
+      "page": "/flight-checkout",
+      "regex": "^/flight\\-checkout(?:/)?$",
       "routeKeys": {},
-      "namedRegex": "^/flight\\-doc\\-preview(?:/)?$"
+      "namedRegex": "^/flight\\-checkout(?:/)?$"
     },
     {
-      "page": "/hotel-doc-preview",
-      "regex": "^/hotel\\-doc\\-preview(?:/)?$",
+      "page": "/hotel-checkout",
+      "regex": "^/hotel\\-checkout(?:/)?$",
       "routeKeys": {},
-      "namedRegex": "^/hotel\\-doc\\-preview(?:/)?$"
+      "namedRegex": "^/hotel\\-checkout(?:/)?$"
     },
     {
       "page": "/how-to",
@@ -97,12 +91,6 @@
       "regex": "^/services(?:/)?$",
       "routeKeys": {},
       "namedRegex": "^/services(?:/)?$"
-    },
-    {
-      "page": "/visa-doc-preview",
-      "regex": "^/visa\\-doc\\-preview(?:/)?$",
-      "routeKeys": {},
-      "namedRegex": "^/visa\\-doc\\-preview(?:/)?$"
     }
   ],
   "dataRoutes": [],
