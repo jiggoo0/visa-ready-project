@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sundara Grove - Luxury Resort, Germany</title>
+    <link rel="stylesheet" href="style.css">
+    </head>
+<body>
+
+    <header class="main-header">
+        <div class="header-content">
+            <div class="logo">
+                <a href="/">SUNDARA <span>GROVE</span></a>
+            </div>
+            
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="#rooms">Rooms & Suites</a></li>
+                    <li><a href="#dining">Dining</a></li>
+                    <li><a href="#experiences">Experiences</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+            
+            <div class="header-actions">
+                <a href="#" class="btn-primary">BOOK YOUR STAY</a>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero-section" style="background-image: url('Sandra.jpg');">
+        <div class="hero-overlay">
+            <p class="subtitle">Where Tranquility Meets Elegance</p>
+            <h1>Discover Your Grove of Sundara</h1>
+        </div>
+
+        <div class="availability-checker">
+            <form action="/book" method="GET" class="booking-form">
+                <div class="form-group">
+                    <label for="checkin">Check-in</label>
+                    <input type="date" id="checkin" name="checkin" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="checkout">Check-out</label>
+                    <input type="date" id="checkout" name="checkout" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="guests">Guests</label>
+                    <select id="guests" name="guests" required>
+                        <option value="1">1 Guest</option>
+                        <option value="2" selected>2 Guests</option>
+                        <option value="3">3 Guests</option>
+                        <option value="4">4+ Guests</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="btn-check-availability">
+                    CHECK AVAILABILITY
+                </button>
+            </form>
+        </div>
+        </section>
+    
+    <section class="about-section">
+        <div class="about-content">
+            <p class="section-tag">A Heritage of Hospitality</p>
+            <h2>Welcome to Sundara Grove, a serene escape nestled in the heart of Germany.</h2>
+            <p class="body-text">
+                Owned by Kritsana Charoensuk, Sundara Grove seamlessly blends classic German architecture with luxurious Thai-inspired tranquility. Every detail is meticulously curated to offer an unparalleled sense of calm and exclusivity. We invite you to experience hospitality redefined.
+            </p>
+            <a href="#" class="btn-secondary">READ OWNER'S MESSAGE</a>
+        </div>
+    </section>
+
+    <section id="rooms" class="accommodations-section">
+        <h2 class="section-heading">Exclusive Accommodations</h2>
+        <p class="section-subtext">Find your perfect sanctuary.</p>
+        
+        <div class="accommodation-grid">
+            
+            <div class="room-card">
+                <img src="About.jpg" alt="Deluxe King Room">
+                <div class="card-info">
+                    <h3>The Deluxe King</h3>
+                    <p>Spacious, sunlit rooms offering premium comfort and forest views.</p>
+                    <a href="#">Explore & Book &rarr;</a>
+                </div>
+            </div>
+            
+            <div class="room-card">
+                <img src="Sandra.jpg" alt="Luxury Suite">
+                <div class="card-info">
+                    <h3>The Signature Suite</h3>
+                    <p>A true blend of luxury with dedicated living areas and two day beds.</p>
+                    <a href="#">Explore & Book &rarr;</a>
+                </div>
+            </div>
+            
+            <div class="room-card">
+                <img src="About.jpg" alt="Villa with Pool">
+                <div class="card-info">
+                    <h3>The Private Villa</h3>
+                    <p>Exclusive pool access and maximum privacy for the ultimate retreat.</p>
+                    <a href="#">Explore & Book &rarr;</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="main-footer" id="contact">
+        <div class="footer-grid">
+            <div class="footer-col logo-col">
+                <div class="logo">SUNDARA <span>GROVE</span></div>
+                <p>Kritsana Charoensuk, Owner<br>Germany</p>
+            </div>
+            
+            <div class="footer-col">
+                <h4>Navigation</h4>
+                <ul>
+                    <li><a href="#rooms">Rooms</a></li>
+                    <li><a href="#dining">Dining</a></li>
+                    <li><a href="#experiences">Experiences</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-col">
+                <h4>Legal</h4>
+                <ul>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                    <li><a href="#">Accessibility</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-col social-col">
+                <h4>Connect</h4>
+                <div class="social-links">
+                    <a href="#" aria-label="Facebook">F</a> 
+                    <a href="#" aria-label="Instagram">I</a>
+                    <a href="#" aria-label="Email">@</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Sundara Grove. All rights reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>

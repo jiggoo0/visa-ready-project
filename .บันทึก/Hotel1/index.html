@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>โรงแรมกฤษณา – รีสอร์ทหรู ประเทศไทย</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="header-content">
+            <div class="logo">
+                <a href="/">KRITSANA <span>HOTEL</span></a>
+            </div>
+            
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="#rooms">ห้องพัก</a></li>
+                    <li><a href="#dining">อาหารและเครื่องดื่ม</a></li>
+                    <li><a href="#experiences">ประสบการณ์</a></li>
+                    <li><a href="#contact">ติดต่อ</a></li>
+                </ul>
+            </nav>
+            
+            <div class="header-actions">
+                <a href="#" class="btn-primary">จองห้องพัก</a>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero-section" style="background-image: url('Sandra.jpg');">
+        <div class="hero-overlay">
+            <p class="subtitle">ความเงียบสงบที่ผสมผสานความงดงามแบบไทย</p>
+            <h1>สัมผัสวันพักผ่อนที่โรงแรมกฤษณา</h1>
+        </div>
+
+        <div class="availability-checker">
+            <form action="/book" method="GET" class="booking-form">
+                <div class="form-group">
+                    <label for="checkin">เช็คอิน</label>
+                    <input type="date" id="checkin" name="checkin" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="checkout">เช็คเอาต์</label>
+                    <input type="date" id="checkout" name="checkout" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="guests">จำนวนผู้เข้าพัก</label>
+                    <select id="guests" name="guests" required>
+                        <option value="1">1 ท่าน</option>
+                        <option value="2" selected>2 ท่าน</option>
+                        <option value="3">3 ท่าน</option>
+                        <option value="4">4 ท่านขึ้นไป</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="btn-check-availability">
+                    ตรวจสอบห้องว่าง
+                </button>
+            </form>
+        </div>
+    </section>
+    
+    <section class="about-section">
+        <div class="about-content">
+            <p class="section-tag">รากฐานแห่งการต้อนรับแบบไทยแท้</p>
+            <h2>ยินดีต้อนรับสู่โรงแรมกฤษณา รีสอร์ทหรูในประเทศไทย</h2>
+            <p class="body-text">
+                โรงแรมกฤษณา บริหารโดยคุณกฤษณา เจริญสุข  
+                ออกแบบเพื่อให้แขกผู้เข้าพักได้สัมผัสการพักผ่อนที่สงบ หรูหรา  
+                และอบอุ่นในแบบฉบับการต้อนรับของไทย ทุกองค์ประกอบถูกคัดสรร  
+                เพื่อให้คุณได้ดื่มด่ำประสบการณ์การพักผ่อนที่แท้จริง
+            </p>
+            <a href="#" class="btn-secondary">อ่านข้อความจากเจ้าของ</a>
+        </div>
+    </section>
+
+    <section id="rooms" class="accommodations-section">
+        <h2 class="section-heading">ประเภทห้องพัก</h2>
+        <p class="section-subtext">เลือกพื้นที่พักผ่อนที่เหมาะกับคุณที่สุด</p>
+        
+        <div class="accommodation-grid">
+            
+            <div class="room-card">
+                <img src="About.jpg" alt="Deluxe King Room">
+                <div class="card-info">
+                    <h3>ห้องดีลักซ์คิง</h3>
+                    <p>ห้องพักกว้างขวาง แสงธรรมชาติ ออกแบบสไตล์ไทยโมเดิร์น</p>
+                    <a href="#">รายละเอียด & จอง &rarr;</a>
+                </div>
+            </div>
+            
+            <div class="room-card">
+                <img src="Sandra.jpg" alt="Luxury Suite">
+                <div class="card-info">
+                    <h3>ห้องสวีทพิเศษ</h3>
+                    <p>แบ่งสัดส่วนพื้นที่ครบครัน พร้อมเดย์เบดสองชุด</p>
+                    <a href="#">รายละเอียด & จอง &rarr;</a>
+                </div>
+            </div>
+            
+            <div class="room-card">
+                <img src="About.jpg" alt="Villa with Pool">
+                <div class="card-info">
+                    <h3>วิลล่าส่วนตัว</h3>
+                    <p>สระน้ำส่วนตัว ความเป็นส่วนตัวสูงสุด เหมาะสำหรับคู่รักและครอบครัว</p>
+                    <a href="#">รายละเอียด & จอง &rarr;</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="main-footer" id="contact">
+        <div class="footer-grid">
+            <div class="footer-col logo-col">
+                <div class="logo">KRITSANA <span>HOTEL</span></div>
+                <p>กฤษณา เจริญสุข, เจ้าของ<br>ประเทศไทย</p>
+            </div>
+            
+            <div class="footer-col">
+                <h4>เมนู</h4>
+                <ul>
+                    <li><a href="#rooms">ห้องพัก</a></li>
+                    <li><a href="#dining">อาหาร</a></li>
+                    <li><a href="#experiences">กิจกรรม</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-col">
+                <h4>ข้อกำหนด</h4>
+                <ul>
+                    <li><a href="#">นโยบายความเป็นส่วนตัว</a></li>
+                    <li><a href="#">เงื่อนไขการใช้บริการ</a></li>
+                    <li><a href="#">การเข้าถึงเว็บไซต์</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-col social-col">
+                <h4>ติดต่อ</h4>
+                <div class="social-links">
+                    <a href="#" aria-label="Facebook">F</a> 
+                    <a href="#" aria-label="Instagram">I</a>
+                    <a href="#" aria-label="Email">@</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 โรงแรมกฤษณา. สงวนลิขสิทธิ์ทั้งหมด.</p>
+        </div>
+    </footer>
+
+</body>
+</html>

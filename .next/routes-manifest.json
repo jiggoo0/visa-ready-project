@@ -1,0 +1,125 @@
+{
+  "version": 3,
+  "pages404": true,
+  "caseSensitive": false,
+  "basePath": "",
+  "redirects": [
+    {
+      "source": "/:path+/",
+      "destination": "/:path+",
+      "internal": true,
+      "statusCode": 308,
+      "regex": "^(?:/((?:[^/]+?)(?:/(?:[^/]+?))*))/$"
+    }
+  ],
+  "headers": [],
+  "rewrites": {
+    "beforeFiles": [],
+    "afterFiles": [],
+    "fallback": []
+  },
+  "dynamicRoutes": [],
+  "staticRoutes": [
+    {
+      "page": "/",
+      "regex": "^/(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/(?:/)?$"
+    },
+    {
+      "page": "/_not-found",
+      "regex": "^/_not\\-found(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/_not\\-found(?:/)?$"
+    },
+    {
+      "page": "/checkout",
+      "regex": "^/checkout(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/checkout(?:/)?$"
+    },
+    {
+      "page": "/contact",
+      "regex": "^/contact(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/contact(?:/)?$"
+    },
+    {
+      "page": "/dual-package-preview",
+      "regex": "^/dual\\-package\\-preview(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/dual\\-package\\-preview(?:/)?$"
+    },
+    {
+      "page": "/faq",
+      "regex": "^/faq(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/faq(?:/)?$"
+    },
+    {
+      "page": "/flight-doc-preview",
+      "regex": "^/flight\\-doc\\-preview(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/flight\\-doc\\-preview(?:/)?$"
+    },
+    {
+      "page": "/hotel-doc-preview",
+      "regex": "^/hotel\\-doc\\-preview(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/hotel\\-doc\\-preview(?:/)?$"
+    },
+    {
+      "page": "/how-to",
+      "regex": "^/how\\-to(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/how\\-to(?:/)?$"
+    },
+    {
+      "page": "/letter-service",
+      "regex": "^/letter\\-service(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/letter\\-service(?:/)?$"
+    },
+    {
+      "page": "/pricing",
+      "regex": "^/pricing(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/pricing(?:/)?$"
+    },
+    {
+      "page": "/samples",
+      "regex": "^/samples(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/samples(?:/)?$"
+    },
+    {
+      "page": "/services",
+      "regex": "^/services(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/services(?:/)?$"
+    },
+    {
+      "page": "/visa-doc-preview",
+      "regex": "^/visa\\-doc\\-preview(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/visa\\-doc\\-preview(?:/)?$"
+    }
+  ],
+  "dataRoutes": [],
+  "rsc": {
+    "header": "rsc",
+    "varyHeader": "rsc, next-router-state-tree, next-router-prefetch, next-router-segment-prefetch",
+    "prefetchHeader": "next-router-prefetch",
+    "didPostponeHeader": "x-nextjs-postponed",
+    "contentTypeHeader": "text/x-component",
+    "suffix": ".rsc",
+    "prefetchSuffix": ".prefetch.rsc",
+    "prefetchSegmentHeader": "next-router-segment-prefetch",
+    "prefetchSegmentSuffix": ".segment.rsc",
+    "prefetchSegmentDirSuffix": ".segments"
+  },
+  "rewriteHeaders": {
+    "pathHeader": "x-nextjs-rewritten-path",
+    "queryHeader": "x-nextjs-rewritten-query"
+  }
+}

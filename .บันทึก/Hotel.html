@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Official Hotel Reservation Confirmation - Schengen Visa</title>
+    <style>
+        /* สไตล์พื้นฐาน: สะอาดตาและเป็นทางการ */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 40px;
+            color: #1a1a1a;
+            line-height: 1.5;
+            background-color: #f7f7f7;
+        }
+        
+        /* Container หลัก: จำกัดความกว้างและไม่มีเงา */
+        .container {
+            max-width: 750px;
+            margin: 0 auto;
+            padding: 30px;
+            background-color: #ffffff;
+            border: 1px solid #cccccc; 
+        }
+
+        /* ส่วนหัว: ข้อมูลโรงแรมและชื่อเอกสาร */
+        .header {
+            border-bottom: 2px solid #1a1a1a;
+            padding-bottom: 15px;
+            margin-bottom: 20px;
+            text-align: left;
+        }
+        .header h1 {
+            font-size: 22px;
+            margin: 0;
+            font-weight: bold;
+            color: #000;
+        }
+        .header p {
+            margin: 3px 0;
+            font-size: 13px;
+        }
+
+        /* กล่องข้อมูลสำคัญ: รหัสการจองและสถานะ */
+        .key-info-box {
+            border: 2px solid #000000; 
+            padding: 15px;
+            margin-bottom: 30px;
+            background-color: #f0f0f0;
+        }
+        .key-info-box .status {
+            font-size: 18px;
+            font-weight: bold;
+            color: #007000; 
+            text-transform: uppercase;
+        }
+
+        /* ตารางข้อมูล: ใช้รูปแบบที่ง่ายที่สุด */
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        .data-table th, .data-table td {
+            padding: 8px 0;
+            text-align: left;
+            border-bottom: 1px solid #e0e0e0;
+            font-size: 14px;
+        }
+        .data-table th {
+            width: 40%;
+            font-weight: normal;
+            color: #444444;
+            padding-right: 15px;
+        }
+        .data-table .value {
+            font-weight: bold;
+            color: #1a1a1a;
+        }
+        
+        /* หัวข้อส่วนย่อย */
+        .section-title {
+            font-size: 16px;
+            font-weight: bold;
+            margin-top: 25px;
+            margin-bottom: 10px;
+            border-bottom: 1px solid #cccccc;
+            padding-bottom: 5px;
+        }
+
+        /* ส่วนท้าย: คำเตือนและข้อกำหนด */
+        .footer {
+            margin-top: 30px;
+            padding-top: 15px;
+            border-top: 1px solid #cccccc;
+            font-size: 12px;
+            color: #666666;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <div class="header">
+        <h1>Hotel Sandra Gove | RESERVATION CONFIRMATION</h1>
+        <p>Am Hauptbahnhof 10, 80335 München, Deutschland (Munich, Germany)</p>
+        <p>Tel: +49 89 1234 5678 | Email: reservations@sandragove.de</p>
+        <p> **VAT ID (Ust-IdNr): DE123456789** </p>
+    </div>
+    
+    <div class="key-info-box">
+        <p><strong>BOOKING REFERENCE:</strong> <span class="value">SG-4592-DE-2026</span></p>
+        <p class="status">RESERVATION STATUS: CONFIRMED AND GUARANTEED</p>
+    </div>
+
+    <div class="section-title">GUEST DETAILS (รายละเอียดผู้เข้าพัก)</div>
+    <table class="data-table">
+        <tr>
+            <th>Full Name (ชื่อ-นามสกุล)</th>
+            <td class="value">MR. ANUCHA THONGDEE</td>
+        </tr>
+        <tr>
+            <th>Passport Number (เลขที่หนังสือเดินทาง)</th>
+            <td class="value">A1234567</td>
+        </tr>
+        <tr>
+            <th>Contact Phone (เบอร์ติดต่อ)</th>
+            <td>+66 8x xxxx xxxx (Thailand)</td>
+        </tr>
+        <tr>
+            <th>Number of Guests (จำนวนผู้เข้าพัก)</th>
+            <td>1 Adult</td>
+        </tr>
+        <tr>
+            <th>Date of Booking (วันที่จอง)</th>
+            <td>03 December 2025</td>
+        </tr>
+    </table>
+
+    <div class="section-title">STAY DETAILS (รายละเอียดการเข้าพัก)</div>
+    <table class="data-table">
+        <tr>
+            <th>Check-in Date (วันที่เข้าพัก)</th>
+            <td class="value">15 January 2026 (DD/MM/YYYY)</td>
+        </tr>
+        <tr>
+            <th>Check-out Date (วันที่ออกจากที่พัก)</th>
+            <td class="value">22 January 2026 (DD/MM/YYYY)</td>
+        </tr>
+        <tr>
+            <th>Total Nights (จำนวนคืน)</th>
+            <td>7 Nights</td>
+        </tr>
+        <tr>
+            <th>Room Type (ประเภทห้องพัก)</th>
+            <td>Standard Single Room, Non-Smoking</td>
+        </tr>
+    </table>
+
+    <div class="section-title">FINANCIAL & CANCELLATION POLICY (การชำระเงินและนโยบาย)</div>
+    <table class="data-table">
+        <tr>
+            <th>Total Price (ราคารวม)</th>
+            <td class="value">€ 700.00 EUR</td>
+        </tr>
+        <tr>
+            <th>Payment Status (สถานะการชำระเงิน)</th>
+            <td>Payment Pending (ชำระ ณ ที่พัก)</td>
+        </tr>
+        <tr>
+            <th>Cancellation Policy (นโยบายการยกเลิก)</th>
+            <td>**FREE CANCELLATION** until 08 January 2026 (11:59 PM CET).</td>
+        </tr>
+    </table>
+
+    <div class="footer">
+        <p>***Official Document for Visa Purpose***</p>
+        <p>This document confirms accommodation for the full duration of stay as required for the Schengen Visa application (Regulation (EC) No 810/2009). All details are verifiable by contacting the hotel management.</p>
+        <p>Confirmation Issued By: Hotel Reservations Department | Date: 04 December 2025</p>
+    </div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,244 @@
+/* ================================================= */
+/* 0. GLOBAL & BASE LAYOUT */
+/* ================================================= */
+
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 40px;
+    background-color: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+.visa-passport-page {
+    position: relative;
+    padding: 10px;
+    background-color: #001f40; 
+    border-radius: 5px;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.5);
+}
+
+.visa-document {
+    width: 550px; 
+    height: 350px; 
+    position: relative;
+    overflow: hidden;
+    background-color: #e6f7ff; 
+    border: 1px solid #1a1a1a;
+    /* [ADVANCED TECH] Paper Texture / Noise Filter */
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency="0.6" numOctaves="3" result="t"/><feColorMatrix in="t" type="matrix" values="0 0 0 0 0.8 0 0 0 0 0.8 0 0 0 0 0.8 0 0 0 1 0"/></filter><rect width="100" height="100" fill="#e6f7ff" filter="url(#n)"/></svg>');
+}
+
+/* ================================================= */
+/* 1. SECURITY LAYERS (GUILLOCHE & BACKGROUND) */
+/* ================================================= */
+
+.guilloche-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.5; 
+    z-index: 1;
+    /* Layer 1: พื้นหลังเส้นทแยงมุม */
+    background: repeating-linear-gradient(
+        -45deg,
+        #cce0ff 0,
+        #cce0ff 1px,
+        transparent 1px,
+        transparent 2px
+    );
+}
+
+.guilloche-container svg {
+    width: 100%;
+    height: 100%;
+    opacity: 0.3; 
+    /* Layer 2: SVG Guilloche ถูกบิดเล็กน้อย */
+    transform: skewX(-2deg); 
+}
+
+/* ================================================= */
+/* 2. HEADER & DATA FIELDS */
+/* ================================================= */
+
+.header-section {
+    position: relative;
+    padding: 10px 10px 5px 10px;
+    z-index: 2;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    font-size: 10px;
+    color: #333;
+}
+
+.logo-eu { /* จำลองสีธง EU */
+    font-size: 10px;
+    font-weight: bold;
+    margin-right: 5px;
+    background-color: #003399; 
+    color: white;
+    padding: 1px 3px;
+    border-radius: 2px;
+}
+
+.control-number {
+    font-size: 16px;
+    font-weight: bold;
+    color: #007000;
+}
+
+.main-content {
+    position: relative;
+    padding: 5px 10px;
+    height: 200px; 
+    z-index: 2;
+}
+
+/* Photo and Border */
+.photo-area {
+    position: absolute;
+    top: 5px;
+    left: 10px;
+    z-index: 20;
+}
+
+.applicant-photo {
+    width: 90px;
+    height: 115px; 
+    object-fit: cover;
+    border: 1px solid #666;
+    /* ขอบตัดที่ไม่ใช่สี่เหลี่ยม */
+    clip-path: polygon(0% 0%, 100% 0%, 100% 90%, 90% 100%, 0% 100%); 
+    box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2); 
+}
+
+/* Data Table */
+.data-fields {
+    position: absolute;
+    top: 5px;
+    left: 110px; 
+    width: 65%;
+}
+
+.visa-data-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+.visa-data-table td {
+    padding: 1px 2px;
+    border: none;
+    vertical-align: top;
+    font-size: 10px;
+    line-height: 1.1;
+}
+.visa-data-table .label {
+    font-weight: normal;
+    color: #666;
+    text-transform: uppercase;
+    font-size: 8px; 
+    padding-bottom: 2px; /* แยก Label ออกจาก Value */
+}
+.visa-data-table .value {
+    font-weight: bold;
+    color: #1a1a1a;
+    text-transform: uppercase;
+    /* [TYPOGRAPHY TECH] จำลองความคมของหมึกพิมพ์ */
+    color: #000000; 
+    text-shadow: 0 0 0.5px #000; 
+}
+.visa-data-table .name-row .label,
+.visa-data-table .name-row .value {
+    font-size: 11px;
+    padding-top: 5px;
+    border-top: 1px dashed #cccccc;
+}
+
+/* ================================================= */
+/* 3. ADVANCED 2D EFFECTS (HOLOGRAM & STAMP) */
+/* ================================================= */
+
+.hologram-effect {
+    position: absolute;
+    top: 55%;
+    left: 50%;
+    /* [TRANSFORM TECH] Mock 3D Perspective + Initial Rotate (Controlled by JS) */
+    transform: translate(-50%, -50%) perspective(100px) rotateY(10deg); 
+    width: 100px;
+    height: 100px;
+    opacity: 0.35; 
+    
+    /* Mock OVI/Metallic Ink Color (Gold/Silver) */
+    background: radial-gradient(circle at 40% 40%, #fffacd 10%, #d4af37 90%); 
+    border-radius: 50%;
+    
+    /* [FILTER TECH] Light & Reflection Simulation */
+    filter: sepia(0.3) contrast(1.2) drop-shadow(0 0 3px rgba(255, 255, 200, 0.8));
+    transition: transform 0.1s ease-out, filter 0.1s ease-out; /* สำหรับ JS Interactivity */
+    z-index: 5;
+}
+
+.germany-crest {
+    /* ใช้ Clip-Path จำลองรูปร่างตราเหยี่ยว */
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    clip-path: polygon(50% 0%, 65% 30%, 100% 30%, 75% 55%, 85% 90%, 50% 70%, 15% 90%, 25% 55%, 0% 30%, 35% 30%); 
+    opacity: 0.1;
+}
+
+.stamp-bangkok {
+    position: absolute;
+    top: 10px;
+    right: 5px; 
+    width: 100px;
+    height: 100px;
+    line-height: 100px;
+    text-align: center;
+    font-size: 10px;
+    color: #003366; 
+    border: 2px solid #003366;
+    border-radius: 50%;
+    opacity: 0.3; 
+    
+    /* [TRANSFORM TECH] Rotation */
+    transform: rotate(20deg) translateX(15px); 
+    /* [FILTER TECH] Ink Smudge Simulation */
+    filter: blur(0.5px); 
+    padding: 5px;
+    z-index: 3;
+}
+
+/* ================================================= */
+/* 4. MRZ (MACHINE READABLE ZONE) & QR CODE */
+/* ================================================= */
+
+.mrz-section {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #ffffff;
+    padding: 5px 10px;
+    font-family: 'Courier Prime', monospace; 
+    font-size: 15px;
+    letter-spacing: 1.5px; 
+    line-height: 1.2;
+    border-top: 1px solid #1a1a1a;
+    z-index: 10;
+    color: #333;
+    text-shadow: 0 0 1px rgba(0, 0, 0, 0.2); 
+}
+
+#qrcode-container {
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+    width: 50px;
+    height: 50px;
+    z-index: 10;
+}

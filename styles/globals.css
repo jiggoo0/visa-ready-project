@@ -1,0 +1,29 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ตั้งค่าฟอนต์หลักที่รองรับภาษาไทย */
+body {
+  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans Thai", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  /* ลบ: background-color: theme('colors.bg-light'); 
+     พื้นหลังจะถูกกำหนดใน app/layout.tsx แทน */
+}
+
+@layer components {
+  /* ปุ่มหลัก (Primary CTA) */
+  .btn-primary {
+    /* ใช้ Hex code ตรงสำหรับพื้นหลัง */
+    @apply bg-[#15803d] text-white font-bold py-3 px-6 rounded-full shadow-lg hover:bg-[#126b34] transition duration-300 transform hover:scale-[1.02] active:scale-100;
+  }
+
+  /* ปุ่มรอง/ไฮไลท์ (Secondary CTA) */
+  .btn-secondary {
+    /* ใช้ Hex code ตรงสำหรับพื้นหลัง */
+    @apply bg-[#ca8a04] text-white font-bold py-3 px-6 rounded-full shadow-lg hover:bg-[#a87503] transition duration-300 transform hover:scale-[1.02] active:scale-100;
+  }
+
+  /* เงาสำหรับ Card */
+  .card-shadow {
+    @apply shadow-xl hover:shadow-2xl transition duration-300;
+  }
+}

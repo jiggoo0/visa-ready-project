@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CONFIRMATION - E-TICKET ITINERARY</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom styles for the E-Ticket aesthetic */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f5f7fa; /* Light background for contrast */
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 28px; /* Slightly increased gap for visual breathing room */
+        }
+
+        .boarding-pass-container {
+            max-width: 750px; /* Slightly wider container */
+            margin: 0 auto;
+            border-radius: 1rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+            background-color: #ffffff;
+            border: 1px solid #e2e8f0; /* Subtle outer border */
+        }
+        
+        /* General item styles for information blocks */
+        .info-block {
+            line-height: 1.2;
+            padding: 0.25rem 0;
+        }
+        .info-label {
+            font-size: 0.65rem; /* Very small, official-looking label */
+            color: #64748b; /* slate-500 */
+            text-transform: uppercase;
+            font-weight: 600;
+            letter-spacing: 0.1em; /* Increased letter spacing */
+        }
+        .info-value {
+            font-size: 1.0rem;
+            font-weight: 700;
+            color: #1e293b;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            line-height: 1.3;
+        }
+        
+        /* Large, prominent text for flight numbers and key airports */
+        .main-info-value {
+            font-size: 2.75rem;
+            font-weight: 900;
+            line-height: 1;
+            letter-spacing: -1px;
+            text-transform: uppercase;
+        }
+        
+        /* Highlighting the crucial time information */
+        .critical-time {
+            font-size: 3rem; /* Extra large time */
+            font-weight: 900;
+            line-height: 1;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 640px) {
+            .main-info-value {
+                font-size: 2rem;
+            }
+            .critical-time {
+                font-size: 2.5rem;
+            }
+        }
+        
+        /* Style for the grey dividing section, often perforated in real tickets */
+        .segment-footer {
+            background-color: #eef2f6; /* slate-100 */
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Main Header -->
+    <header class="text-center max-w-750px mx-auto w-full">
+        <h1 class="text-3xl font-extrabold text-gray-800 uppercase tracking-tight">E-TICKET ITINERARY & CONFIRMATION</h1>
+        <p class="text-gray-500 mt-2 text-sm">
+            TICKET ISSUE DATE: 20 JAN 2023 | ISSUE LOCATION: BANGKOK, THAILAND
+        </p>
+        <div class="mt-1">
+            <span class="text-gray-600 font-semibold text-xs">BOOKING PNR (AGENT):</span> <span class="font-extrabold text-black text-sm">HJKLM6</span>
+            <span class="mx-3 text-gray-400">|</span>
+            <span class="text-gray-600 font-semibold text-xs">AIRLINE PNR (TG):</span> <span class="font-extrabold text-black text-sm">HJKLM6</span>
+        </div>
+        <p class="text-gray-500 mt-1 text-sm">
+            E-TICKET NO. (Passenger): <span class="font-bold text-blue-700 text-lg">217-1234567890</span>
+        </p>
+    </header>
+
+    <!-- ---------------------------------------------------- -->
+    <!-- OUTBOUND FLIGHT TG 0930 (Green Theme) -->
+    <!-- ---------------------------------------------------- -->
+    <div class="boarding-pass-container">
+        <!-- Main Ticket Section -->
+        <div class="p-6 bg-green-50 rounded-t-xl border-l-8 border-green-600">
+            <h2 class="text-xl font-extrabold mb-6 text-green-800 flex items-center uppercase tracking-wide">
+                <span class="mr-3">✈</span> FLIGHT SEGMENT 1: BANGKOK (BKK) → PARIS (CDG)
+                <span class="ml-auto text-sm font-semibold text-gray-600">THU 26 JAN 2023</span>
+            </h2>
+            
+            <!-- Passenger and Flight Details -->
+            <div class="grid grid-cols-3 sm:grid-cols-5 gap-x-4 gap-y-6 mb-6 pb-4 border-b border-green-200">
+                <div class="info-block col-span-3 sm:col-span-2">
+                    <div class="info-label">PASSENGER NAME / ผู้โดยสาร</div>
+                    <div class="info-value text-2xl text-black uppercase tracking-tight">SAITOUR/RUNWONGKAN MRS</div>
+                </div>
+
+                <div class="info-block">
+                    <div class="info-label">AIRLINE & FLIGHT / เที่ยวบิน</div>
+                    <div class="main-info-value text-green-700">TG0930</div>
+                </div>
+                
+                <div class="info-block">
+                    <div class="info-label">CLASS / SEAT TYPE</div>
+                    <div class="info-value text-xl text-black">Y (Economy)</div>
+                    <div class="text-xs text-gray-500 font-semibold mt-1">FARE BASIS: V09</div>
+                </div>
+
+                <div class="info-block">
+                    <div class="info-label">STATUS / สถานะ</div>
+                    <div class="info-value text-lg font-extrabold text-blue-600">CONFIRMED (OK)</div>
+                    <div class="text-xs text-gray-500 font-semibold mt-1">CODE SHARE: NO</div>
+                </div>
+            </div>
+
+            <!-- Departure/Arrival Details Grid - Refined for clarity -->
+            <div class="grid grid-cols-2 sm:grid-cols-5 gap-x-4 gap-y-6">
+                <!-- Departure -->
+                <div class="info-block col-span-1">
+                    <div class="info-label">DEPARTURE TIME (BKK)</div>
+                    <div class="critical-time text-red-600">00:05</div>
+                    <div class="text-sm font-semibold text-gray-700">JAN 26 (LOCAL)</div>
+                </div>
+                
+                <!-- Departure Airport -->
+                <div class="info-block col-span-1">
+                    <div class="info-label">FROM / ต้นทาง</div>
+                    <div class="main-info-value text-black">BKK</div>
+                    <div class="text-xs text-gray-500 font-semibold">BANGKOK SUVARNABH</div>
+                </div>
+
+                <!-- Duration / Aircraft (Center Block) -->
+                <div class="info-block hidden sm:flex flex-col items-center justify-center col-span-1">
+                    <div class="info-label text-center">FLIGHT DURATION</div>
+                    <div class="text-2xl font-bold text-gray-700 mt-2">12H 45M</div>
+                    <div class="text-xs text-gray-500 mt-1">AIRCRAFT: B777-300ER</div>
+                </div>
+
+                <!-- Arrival -->
+                <div class="info-block col-span-1">
+                    <div class="info-label">ARRIVAL TIME (CDG)</div>
+                    <div class="critical-time text-blue-600">06:50</div>
+                    <div class="text-sm font-semibold text-gray-700">JAN 26 (LOCAL)</div>
+                </div>
+                
+                <!-- Arrival Airport -->
+                <div class="info-block col-span-1">
+                    <div class="info-label">TO / ปลายทาง</div>
+                    <div class="main-info-value text-black">CDG</div>
+                    <div class="text-xs text-gray-500 font-semibold">PARIS DE GAULLE</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Segment Footer (Grey Area) - Separator for travel details -->
+        <div class="p-4 segment-footer flex flex-col sm:flex-row justify-between items-start sm:items-center rounded-b-xl">
+            <!-- Critical Travel Data -->
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 text-center w-full sm:w-auto">
+                <div class="info-block">
+                    <div class="info-label">DEP. TERMINAL (BKK)</div>
+                    <div class="text-lg font-extrabold text-gray-800 mt-1">MAIN</div>
+                </div>
+                <div class="info-block">
+                    <div class="info-label">ARR. TERMINAL (CDG)</div>
+                    <div class="text-lg font-extrabold text-gray-800 mt-1">2E</div>
+                </div>
+                <div class="info-block">
+                    <div class="info-label">BAGGAGE (CHECKED)</div>
+                    <div class="text-lg font-extrabold text-green-700 mt-1">1 PC (23KG)</div>
+                </div>
+                <div class="info-block">
+                    <div class="info-label">MEAL / SERVICE</div>
+                    <div class="text-lg font-extrabold text-gray-800 mt-1">DINNER / B</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- ---------------------------------------------------- -->
+    <!-- RETURN FLIGHT TG 0931 (Red Theme) -->
+    <!-- ---------------------------------------------------- -->
+    <div class="boarding-pass-container">
+        <!-- Main Ticket Section -->
+        <div class="p-6 bg-red-50 rounded-t-xl border-l-8 border-red-600">
+            <h2 class="text-xl font-extrabold mb-6 text-red-800 flex items-center uppercase tracking-wide">
+                <span class="mr-3">🛬</span> FLIGHT SEGMENT 2: PARIS (CDG) → BANGKOK (BKK)
+                <span class="ml-auto text-sm font-semibold text-gray-600">MON 30 JAN 2023</span>
+            </h2>
+            
+            <!-- Passenger and Flight Details -->
+            <div class="grid grid-cols-3 sm:grid-cols-5 gap-x-4 gap-y-6 mb-6 pb-4 border-b border-red-200">
+                <div class="info-block col-span-3 sm:col-span-2">
+                    <div class="info-label">PASSENGER NAME / ผู้โดยสาร</div>
+                    <div class="info-value text-2xl text-black uppercase tracking-tight">SAITOUR/RUNWONGKAN MRS</div>
+                </div>
+
+                <div class="info-block">
+                    <div class="info-label">AIRLINE & FLIGHT / เที่ยวบิน</div>
+                    <div class="main-info-value text-red-700">TG0931</div>
+                </div>
+                
+                <div class="info-block">
+                    <div class="info-label">CLASS / SEAT TYPE</div>
+                    <div class="info-value text-xl text-black">Y (Economy)</div>
+                    <div class="text-xs text-gray-500 font-semibold mt-1">FARE BASIS: V09</div>
+                </div>
+
+                <div class="info-block">
+                    <div class="info-label">STATUS / สถานะ</div>
+                    <div class="info-value text-lg font-extrabold text-blue-600">CONFIRMED (OK)</div>
+                    <div class="text-xs text-gray-500 font-semibold mt-1">CODE SHARE: NO</div>
+                </div>
+            </div>
+
+            <!-- Departure/Arrival Details Grid - Refined for clarity -->
+            <div class="grid grid-cols-2 sm:grid-cols-5 gap-x-4 gap-y-6">
+                <!-- Departure -->
+                <div class="info-block col-span-1">
+                    <div class="info-label">DEPARTURE TIME (CDG)</div>
+                    <div class="critical-time text-red-600">12:30</div>
+                    <div class="text-sm font-semibold text-gray-700">JAN 30 (LOCAL)</div>
+                </div>
+                
+                <!-- Departure Airport -->
+                <div class="info-block col-span-1">
+                    <div class="info-label">FROM / ต้นทาง</div>
+                    <div class="main-info-value text-black">CDG</div>
+                    <div class="text-xs text-gray-500 font-semibold">PARIS DE GAULLE</div>
+                </div>
+
+                <!-- Duration / Aircraft (Center Block) -->
+                <div class="info-block hidden sm:flex flex-col items-center justify-center col-span-1">
+                    <div class="info-label text-center">FLIGHT DURATION</div>
+                    <div class="text-2xl font-bold text-gray-700 mt-2">11H 30M</div>
+                    <div class="text-xs text-gray-500 mt-1">AIRCRAFT: B777-300ER</div>
+                </div>
+
+                <!-- Arrival (Next Day) -->
+                <div class="info-block col-span-1">
+                    <div class="info-label">ARRIVAL TIME (BKK) (+1)</div>
+                    <div class="critical-time text-blue-600">06:00</div>
+                    <div class="text-sm font-semibold text-gray-700">JAN 31 (LOCAL)</div>
+                </div>
+                
+                <!-- Arrival Airport -->
+                <div class="info-block col-span-1">
+                    <div class="info-label">TO / ปลายทาง</div>
+                    <div class="main-info-value text-black">BKK</div>
+                    <div class="text-xs text-gray-500 font-semibold">BANGKOK SUVARNABH</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Segment Footer (Grey Area) - Separator for travel details -->
+        <div class="p-4 segment-footer flex flex-col sm:flex-row justify-between items-start sm:items-center rounded-b-xl">
+            <!-- Critical Travel Data -->
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 text-center w-full sm:w-auto">
+                <div class="info-block">
+                    <div class="info-label">DEP. TERMINAL (CDG)</div>
+                    <div class="text-lg font-extrabold text-gray-800 mt-1">2E</div>
+                </div>
+                <div class="info-block">
+                    <div class="info-label">ARR. TERMINAL (BKK)</div>
+                    <div class="text-lg font-extrabold text-gray-800 mt-1">MAIN</div>
+                </div>
+                <div class="info-block">
+                    <div class="info-label">BAGGAGE (CHECKED)</div>
+                    <div class="text-lg font-extrabold text-red-700 mt-1">1 PC (23KG)</div>
+                </div>
+                <div class="info-block">
+                    <div class="info-label">MEAL / SERVICE</div>
+                    <div class="text-lg font-extrabold text-gray-800 mt-1">LUNCH / D</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ---------------------------------------------------- -->
+    <!-- Baggage and Fare Rules Section (New Section) -->
+    <!-- ---------------------------------------------------- -->
+    <div class="max-w-750px mx-auto w-full p-6 bg-white rounded-xl shadow-lg border border-gray-200">
+        <h3 class="text-lg font-extrabold text-gray-800 mb-4 border-b pb-2 uppercase text-blue-700 tracking-wide">✈ BAGGAGE AND FARE RULES SUMMARY</h3>
+        
+        <!-- Baggage Section -->
+        <div class="mb-4">
+            <h4 class="font-bold text-gray-700 mb-2 border-l-4 border-blue-100 pl-2">1. BAGGAGE ALLOWANCE (น้ำหนักสัมภาระ)</h4>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm text-gray-600 border p-4 rounded-lg bg-blue-50">
+                <div>
+                    <p class="font-extrabold text-black">CHECKED BAGGAGE (สัมภาระโหลดใต้ท้องเครื่อง):</p>
+                    <ul class="list-disc list-inside ml-4 space-y-1 mt-1">
+                        <li>Maximum <span class="font-bold text-lg">1 Piece</span> (ชิ้น)</li>
+                        <li>Weight limit: <span class="font-bold text-lg">23 KG</span> (กิโลกรัม) Per Piece</li>
+                    </ul>
+                </div>
+                <div>
+                    <p class="font-extrabold text-black">CABIN BAGGAGE (สัมภาระถือขึ้นเครื่อง):</p>
+                    <ul class="list-disc list-inside ml-4 space-y-1 mt-1">
+                        <li>Maximum 1 Piece (ชิ้น)</li>
+                        <li>Weight limit: 7 KG (กิโลกรัม)</li>
+                    </ul>
+                </div>
+            </div>
+            <p class="text-xs text-red-500 mt-2">* Weight limits are strictly enforced by the airline (TG) and may incur excess charges.</p>
+        </div>
+
+        <!-- Fare Rules Section -->
+        <div class="mb-4">
+            <h4 class="font-bold text-gray-700 mb-2 border-l-4 border-red-100 pl-2">2. FARE CONDITIONS (เงื่อนไขค่าโดยสาร)</h4>
+            <div class="space-y-3 text-sm text-gray-600 border p-4 rounded-lg bg-red-50">
+                <div class="flex items-start">
+                    <span class="text-red-500 font-extrabold mr-2 mt-0.5">●</span>
+                    <p><strong>CANCELLATION/REFUND:</strong> Non-refundable after departure. Changes may be permitted subject to a penalty fee of THB 3,000 + fare difference.</p>
+                </div>
+                <div class="flex items-start">
+                    <span class="text-red-500 font-extrabold mr-2 mt-0.5">●</span>
+                    <p><strong>DATE/TIME CHANGE:</strong> Permitted for a fee of THB 2,000 + applicable fare difference, subject to availability.</p>
+                </div>
+                <div class="flex items-start">
+                    <span class="text-blue-500 font-extrabold mr-2 mt-0.5">●</span>
+                    <p><strong>NO SHOW:</strong> Additional penalty applies for failure to check in on time.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Travel Advisory and Important Notes Section -->
+    <div class="max-w-750px mx-auto w-full p-6 bg-yellow-50 rounded-xl shadow-lg border border-yellow-300">
+        <h3 class="text-lg font-extrabold text-gray-800 mb-3 border-b pb-2 uppercase text-yellow-700 tracking-wide">⚠ IMPORTANT TRAVEL ADVISORY / คำแนะนำที่สำคัญ</h3>
+        <div class="space-y-3 text-sm text-gray-700">
+            <div class="flex items-start">
+                <span class="text-red-600 font-extrabold mr-2 mt-0.5">●</span>
+                <p><strong>CHECK-IN DEADLINE:</strong> All passengers must commence check-in procedures **at least 3 hours prior** to the scheduled departure time. Boarding Gates close 20 minutes before departure.</p>
+            </div>
+            <div class="flex items-start">
+                <span class="text-red-600 font-extrabold mr-2 mt-0.5">●</span>
+                <p><strong>PASSPORT & VISA:</strong> Passenger is responsible for ensuring their passport is valid for at least 6 months beyond the return date, and that all necessary visas (e.g., Schengen) are secured before travel.</p>
+            </div>
+            <div class="flex items-start">
+                <span class="text-blue-600 font-extrabold mr-2 mt-0.5">●</span>
+                <p><strong>FLIGHT VERIFICATION:</strong> All flight times are subject to change by the airline. Please verify flight status and timings directly with Thai Airways (TG) 24 hours before travel.</p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Agency Contact Footer (More prominent) -->
+    <footer class="max-w-750px mx-auto w-full text-center text-sm text-gray-600 pt-6 border-t border-gray-300">
+        <div class="font-extrabold text-gray-800 uppercase text-lg tracking-wide">CONTACT KHOBFAH TRAVEL CO., LTD.</div>
+        <div class="text-xs text-gray-500 mt-1">24HR EMERGENCY SUPPORT & CUSTOMER SERVICE</div>
+        <div class="text-2xl text-blue-700 font-black mt-2">
+            HOTLINE: 166-99-365-5442
+        </div>
+        <div class="text-xs mt-1">
+            TRAVEL CONSULTANT: KJ | EMAIL: INFO@KHOBFAHTRAVEL.COM
+        </div>
+    </footer>
+
+
+</body>
+</html>
+

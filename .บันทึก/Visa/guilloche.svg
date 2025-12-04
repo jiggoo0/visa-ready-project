@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none">
+    <defs>
+        <pattern id="smallWavePattern" width="10" height="10" patternUnits="userSpaceOnUse">
+            <path d="M0 5 C 2.5 0, 7.5 10, 10 5" stroke="#a3d9ff" stroke-width="0.15" fill="none"/>
+        </pattern>
+        
+        <pattern id="circlePattern" width="25" height="25" patternUnits="userSpaceOnUse">
+            <ellipse cx="12.5" cy="12.5" rx="10" ry="8" stroke="#ccffcc" stroke-width="0.2" fill="none"/>
+            <ellipse cx="12.5" cy="12.5" rx="8" ry="10" stroke="#ccffcc" stroke-width="0.2" fill="none"/>
+        </pattern>
+    </defs>
+
+    <rect width="100" height="100" fill="#e6f7ff"/>
+
+    <g transform="rotate(45, 50, 50)">
+        <rect width="120" height="120" x="-10" y="-10" fill="url(#smallWavePattern)"/>
+    </g>
+    
+    <g transform="translate(-10, -10)">
+        <rect width="120" height="120" fill="url(#circlePattern)" opacity="0.6"/>
+    </g>
+    
+    <g stroke="#99bbff" stroke-width="0.4" fill="none" opacity="0.7">
+        <path d="M-10 10 C 20 50, 80 0, 110 50"/>
+        <path d="M-10 15 C 25 55, 75 5, 110 55"/>
+        <path d="M0 100 Q 50 80, 100 100"/>
+    </g>
+    
+    <g transform="translate(1, 98)" fill="#333333" opacity="0.2">
+        <text style="font-size: 0.5px; font-family: monospace;">SCHENGEN VISUM SECURE PRINT SCHENGEN VISUM</text>
+    </g>
+    
+</svg>

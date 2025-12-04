@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Schengen Visa Replica (Germany) - High Fidelity</title>
+    
+    <link rel="stylesheet" href="style.css">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
+    
+    <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script> 
+</head>
+<body>
+
+<div class="visa-passport-page">
+    <article class="visa-document">
+        
+        <div class="guilloche-container" role="img" aria-label="Guilloche security pattern background">
+            <?php include('guilloche.svg'); ?>
+        </div>
+
+        <header class="header-section">
+            <div class="branding-container">
+                <span class="logo-eu">EU</span>
+                <span class="visa-title">VISA / VISUM</span>
+            </div>
+            <div class="country-branding">
+                <span class="country-name">DEUTSCHLAND/GERMANY</span>
+                <span class="country-code">DEU</span>
+            </div>
+            <div class="control-number-area">
+                <span class="control-number" id="visa-control-number">007998365</span>
+            </div>
+        </header>
+        
+        <section class="main-content">
+            
+            <div class="photo-area">
+                <img src="user.jpg" alt="Applicant Photo Narumon Soomkan" class="applicant-photo">
+                <div class="dotted-border-left"></div>
+            </div>
+            
+            <div class="data-fields">
+                <table class="visa-data-table">
+                    <tbody>
+                        <tr>
+                            <td class="label">1. VALID FOR / VALABLE POUR:</td>
+                            <td class="value" colspan="5">SCHENGEN STATES</td>
+                        </tr>
+                        <tr>
+                            <td class="label">2. TYPE OF VISA / TYPE DE VISA:</td>
+                            <td class="value">C</td>
+                            <td class="label">3. VISA NO. / NUMERO DU VISA:</td>
+                            <td class="value" colspan="3">DEUCH7762531</td>
+                        </tr>
+                        <tr>
+                            <td class="label">4. VALID FROM / DU:</td>
+                            <td class="value">20-11-25</td>
+                            <td class="label">5. UNTIL / AU:</td>
+                            <td class="value" colspan="3">08-03-26</td>
+                        </tr>
+                        <tr>
+                            <td class="label">6. ENTRIES / NBR D'ENTREES:</td>
+                            <td class="value">01</td>
+                            <td class="label">7. DURATION OF STAY / DUREE DU SEJOUR:</td>
+                            <td class="value" colspan="3">60 DAYS</td>
+                        </tr>
+                        <tr>
+                            <td class="label">8. ISSUED IN / A:</td>
+                            <td class="value">BANGKOK</td>
+                            <td class="label">9. ON / LE:</td>
+                            <td class="value" colspan="3">18-11-25</td>
+                        </tr>
+                        
+                        <tr class="name-row">
+                            <td class="label">10. SURNAME, NAME / NOM, PRENOM:</td>
+                            <td class="value" colspan="5">NARUMON SOOMKAN</td>
+                        </tr>
+                        <tr class="name-row">
+                            <td class="label">11. PASSPORT NO. / NO. PASSEPORT:</td>
+                            <td class="value" colspan="5">AC7762531</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="hologram-effect">
+                <div class="germany-crest"></div>
+            </div>
+            
+            <div id="qrcode-container"></div>
+            <div class="stamp-bangkok">EMBASSY BANGKOK</div>
+        </section>
+        
+        <footer class="mrz-section">
+            <p class="mrz-line-1">VCCBEUSSHNADE&lt;&lt;PRNNDE&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;</p>
+            <p class="mrz-line-2">25108898898THA88000638T83P2038868983221</p>
+        </footer>
+    </article>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

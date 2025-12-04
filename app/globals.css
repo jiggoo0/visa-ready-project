@@ -1,0 +1,30 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  /* ปุ่มหลัก (Primary CTA) */
+  .btn-primary {
+    @apply bg-brand-green text-white font-semibold py-3 px-6 rounded-md shadow-md 
+           hover:bg-emerald-800 transition-colors duration-200 focus-visible:ring-2 
+           focus-visible:ring-brand-green;
+  }
+
+  /* ปุ่มรอง (Secondary CTA) */
+  .btn-secondary {
+    @apply bg-brand-gold text-white font-semibold py-3 px-6 rounded-md shadow-md 
+           hover:bg-amber-800 transition-colors duration-200 focus-visible:ring-2 
+           focus-visible:ring-brand-gold;
+  }
+
+  /* ปุ่ม Outline */
+  .btn-outline {
+    @apply border border-brand-green text-brand-green font-medium py-3 px-6 rounded-md 
+           hover:bg-brand-green hover:text-white transition-colors duration-200;
+  }
+
+  /* Card */
+  .card {
+    @apply bg-white border border-gray-200 rounded-lg shadow-sm p-6 hover:shadow-md transition-shadow;
+  }
+}
