@@ -15,14 +15,6 @@
       "static/css/8f2bfba3b5aea9b4.css",
       "static/chunks/app/layout-04d26fa193a59aaf.js"
     ],
-    "/checkout/page": [
-      "static/chunks/webpack-950eec8d6dd36b04.js",
-      "static/chunks/77bacffa-2967f3b0a81c3d1d.js",
-      "static/chunks/553-2070dee5538882bf.js",
-      "static/chunks/main-app-cc6796523b2225ad.js",
-      "static/chunks/783-f279a139c8d778d2.js",
-      "static/chunks/app/checkout/page-084ce2790906c47c.js"
-    ],
     "/contact/page": [
       "static/chunks/webpack-950eec8d6dd36b04.js",
       "static/chunks/77bacffa-2967f3b0a81c3d1d.js",
@@ -31,6 +23,14 @@
       "static/chunks/783-f279a139c8d778d2.js",
       "static/chunks/13-3327d4e79db190bb.js",
       "static/chunks/app/contact/page-704d41da225c210a.js"
+    ],
+    "/checkout/page": [
+      "static/chunks/webpack-950eec8d6dd36b04.js",
+      "static/chunks/77bacffa-2967f3b0a81c3d1d.js",
+      "static/chunks/553-2070dee5538882bf.js",
+      "static/chunks/main-app-cc6796523b2225ad.js",
+      "static/chunks/783-f279a139c8d778d2.js",
+      "static/chunks/app/checkout/page-084ce2790906c47c.js"
     ],
     "/dual-package-preview/page": [
       "static/chunks/webpack-950eec8d6dd36b04.js",
@@ -95,14 +95,6 @@
       "static/chunks/628-26709b28b0d78422.js",
       "static/chunks/app/page-ef1cad91e8dd1e86.js"
     ],
-    "/pricing/page": [
-      "static/chunks/webpack-950eec8d6dd36b04.js",
-      "static/chunks/77bacffa-2967f3b0a81c3d1d.js",
-      "static/chunks/553-2070dee5538882bf.js",
-      "static/chunks/main-app-cc6796523b2225ad.js",
-      "static/chunks/783-f279a139c8d778d2.js",
-      "static/chunks/app/pricing/page-59c7b6b73a3716e6.js"
-    ],
     "/samples/page": [
       "static/chunks/webpack-950eec8d6dd36b04.js",
       "static/chunks/77bacffa-2967f3b0a81c3d1d.js",
@@ -129,6 +121,14 @@
       "static/chunks/783-f279a139c8d778d2.js",
       "static/chunks/13-3327d4e79db190bb.js",
       "static/chunks/app/visa-doc-preview/page-fbd5f678705bed0e.js"
+    ],
+    "/pricing/page": [
+      "static/chunks/webpack-950eec8d6dd36b04.js",
+      "static/chunks/77bacffa-2967f3b0a81c3d1d.js",
+      "static/chunks/553-2070dee5538882bf.js",
+      "static/chunks/main-app-cc6796523b2225ad.js",
+      "static/chunks/783-f279a139c8d778d2.js",
+      "static/chunks/app/pricing/page-59c7b6b73a3716e6.js"
     ]
   }
 }
