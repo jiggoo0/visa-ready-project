@@ -1,6 +1,7 @@
 import './globals.css';
 import { Inter } from 'next/font/google';
 import type { Metadata } from 'next';
+import Widget from '@/components/Widget'; // ✅ Import Widget
 
 // โหลด Font Inter
 const inter = Inter({ subsets: ['latin'] });
@@ -40,6 +41,9 @@ export default function RootLayout({
       <body className={`${inter.className} antialiased text-gray-800`}>
         {/* เนื้อหาของแต่ละหน้า Page จะถูก Render ภายใน Body */}
         {children}
+
+        {/* ✅ Widget แสดงทุกหน้า */}
+        <Widget />
       </body>
     </html>
   );

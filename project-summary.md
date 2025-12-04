@@ -1,5 +1,5 @@
 # 📑 Project Summary Report
-_Generated on Thu Dec  4 12:27:24 +07 2025_
+_Generated on Thu Dec  4 14:48:22 +07 2025_
 
 
 ## ⚙️ Environment Variables
@@ -49,9 +49,11 @@ components
 ├── PDFPreview.tsx
 ├── PricingCard.tsx
 ├── Review.tsx
-└── ServiceCard.tsx
+├── ReviewSlider.tsx
+├── ServiceCard.tsx
+└── Widget.tsx
 
-1 directory, 9 files
+1 directory, 11 files
 
 ### lib
 lib
@@ -66,8 +68,9 @@ lib
 public
 ├── favicon.ico
 └── images
+    └── Hero.jpg
 
-2 directories, 1 file
+2 directories, 2 files
 
 ### scripts
 scripts
@@ -84,32 +87,32 @@ scripts
 'use client';
 
 import React from 'react';
-// ใช้ Absolute Imports สำหรับคอมโพเนนต์
 import ServiceCard from '@/components/ServiceCard';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 
-// นำเข้าไอคอนที่จำเป็นสำหรับบัตรบริการ
 import { Plane, Hotel, PlaneTakeoff, BookOpenCheck } from 'lucide-react';
 import type { LucideProps } from 'lucide-react';
 import type { ForwardRefExoticComponent, RefAttributes } from 'react';
 
 // Type สำหรับ Icon Component (LucideIcon)
-type LucideIconType = ForwardRefExoticComponent<Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>>;
+type LucideIconType = ForwardRefExoticComponent<
+  Omit<LucideProps, 'ref'> & RefAttributes<SVGSVGElement>
+>;
 
 // ข้อมูลจำลองสำหรับบริการ
 interface ServiceItem {
-    id: number;
-    title: string;
-    description: string;
-    icon: LucideIconType;
-    linkHref: string;
-    priceText: string;
-    isPopular: boolean;
+  id: number;
+  title: string;
+  description: string;
+  icon: LucideIconType;
+  linkHref: string;
+  priceText: string;
+  isPopular: boolean;
 }
 
 const servicesData: ServiceItem[] = [
-    {
+  {
 
 ```
 
@@ -122,31 +125,31 @@ const servicesData: ServiceItem[] = [
 import React from 'react';
 import Link from 'next/link';
 import { Plane, Building2, CheckCircle2, FileText, Download } from 'lucide-react';
-// 💡 เพิ่มการ Import Header และ Footer
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 
 // ตัวอย่างข้อมูลเอกสารแสดงในหน้า Samples
 const SampleData = [
   {
-    type: 'ตั๋วเครื่องบินจำลอง',
+    type: 'ตั๋วเครื่องบิน (Flight Itinerary)',
     description:
-      'ตัวอย่างไฟล์ PDF แสดงการจองเที่ยวบิน (Flight Itinerary) เพื่อยื่นวีซ่าเชงเก้นหรือประเทศอื่น ๆ',
+      'ตัวอย่างไฟล์ PDF แสดงการจองเที่ยวบินเพื่อใช้ประกอบการยื่นวีซ่าเชงเก้น ญี่ปุ่น หรือประเทศอื่น ๆ',
     icon: Plane,
     link: '/flight-doc-preview',
-    isNew: true
+    isNew: true,
   },
   {
-    type: 'เอกสารโรงแรมจำลอง',
+    type: 'เอกสารโรงแรม (Hotel Booking)',
     description:
-      'ตัวอย่างเอกสารยืนยันการจองที่พัก (Hotel Booking) แสดงชื่อผู้สมัครและช่วงวันเข้าพัก',
+      'ตัวอย่างเอกสารยืนยันการจองที่พัก แสดงชื่อผู้สมัครและช่วงวันเข้าพัก เพื่อใช้ประกอบการยื่นวีซ่า',
     icon: Building2,
     link: '/visa-doc-preview',
-    isNew: false
+    isNew: false,
   },
   {
-    type: 'แพ็กเกจคู่ (ตั๋ว+โรงแรม)',
-    description: 'ตัวอย่างเอกสารชุดสมบูรณ์ที่พร้อมยื่นในรูปแบบ PDF ที่รัดกุม',
+    type: 'แพ็กเกจคู่ (ตั๋ว + โรงแรม)',
+    description: 'ตัวอย่างเอกสารชุดสมบูรณ์ที่พร้อมยื่นในรูปแบบ PDF ครบถ้วนและน่าเชื่อถือ',
+    icon: CheckCircle2,
 
 ```
 
@@ -157,11 +160,9 @@ const SampleData = [
 'use client';
 
 import React from 'react';
-// 💡 แก้ไข: เพิ่มการ Import Link จาก next/link
-import Link from 'next/link'; 
+import Link from 'next/link';
 import { FileText, Check, Lightbulb, Clock, Download } from 'lucide-react';
 
-// 💡 เพิ่มการ Import Header และ Footer
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 
@@ -169,21 +170,23 @@ import Footer from '@/components/Footer';
 type LucideIconType = typeof FileText;
 
 interface Step {
-    icon: LucideIconType;
-    title: string;
-    description: string;
+  icon: LucideIconType;
+  title: string;
+  description: string;
 }
 
 const STEPS: Step[] = [
-    {
-        icon: Lightbulb,
-        title: '1. เตรียมข้อมูลพื้นฐาน (Initial Data Prep)',
-        description:
-            'รวบรวมข้อมูลสำคัญ เช่น ชื่อ-นามสกุลผู้เดินทาง วันที่เดินทางไป-กลับ เมืองต้นทางและปลายทาง (สำหรับตั๋วเครื่องบิน) และชื่อโรงแรมที่ยืนยันแล้ว (สำหรับเอกสารที่พัก)',
-    },
-    {
-        icon: FileText,
-        title: '2. เลือกประเภทเอกสารที่ต้องการ (Select Document Type)',
+  {
+    icon: Lightbulb,
+    title: '1. เตรียมข้อมูลพื้นฐาน (Initial Data Prep)',
+    description:
+      'รวบรวมข้อมูลสำคัญ เช่น ชื่อ-นามสกุลผู้เดินทาง วันที่เดินทางไป-กลับ เมืองต้นทางและปลายทาง (สำหรับตั๋วเครื่องบิน) และชื่อโรงแรมที่ยืนยันแล้ว (สำหรับเอกสารที่พัก)',
+  },
+  {
+    icon: FileText,
+    title: '2. เลือกประเภทเอกสารที่ต้องการ (Select Document Type)',
+    description:
+      'เลือกการสร้างเอกสารเป็น Flight Itinerary, Hotel Booking หรือ Dual Package (รวมตั๋วเครื่องบินและโรงแรม) เพื่อให้สอดคล้องกับความต้องการในการยื่นวีซ่าของคุณ',
 
 ```
 
@@ -191,36 +194,36 @@ const STEPS: Step[] = [
 ### `./app/pricing/page.tsx`
 
 ```js
-// app/pricing/page.tsx (อัปเดตเฉพาะส่วนที่เกี่ยวข้อง)
+// app/pricing/page.tsx
 import React from 'react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import PricingCard from '@/components/PricingCard';
 
-// ... (Imports และ Types อื่น ๆ)
-
-// 💡 โครงสร้างข้อมูลใหม่ที่สมมติว่าทำให้เกิด Error นี้
 interface FeatureItem {
-    name: string;
-    isAvailable: boolean;
+  name: string;
+  isAvailable: boolean;
 }
 
 interface PricingPlan {
-    title: string;
-    description: string;
-    price: string;
-    features: FeatureItem[]; // ใช้ Object Array ตาม Error Message
-    linkHref: string;
-    buttonText: string;
-    isRecommended?: boolean;
+  title: string;
+  description: string;
+  price: number;
+  currency?: 'THB' | 'USD' | 'EUR';
+  features: FeatureItem[];
+  linkHref: string;
+  buttonText: string;
+  isRecommended?: boolean;
 }
 
 const pricingData: PricingPlan[] = [
-    {
-        title: "Flight Starter",
-        description: "สำหรับผู้ที่ต้องการเพียงเอกสารตั๋วเครื่องบินจำลองเท่านั้น",
-        price: "฿ 299",
-        features: [
+  {
+    title: "Flight Starter",
+    description: "สำหรับผู้ที่ต้องการเพียงเอกสารตั๋วเครื่องบินเท่านั้น",
+    price: 299,
+    currency: "THB",
+    features: [
+      { name: "ตั๋วเครื่องบิน", isAvailable: true },
 
 ```
 
@@ -231,33 +234,33 @@ const pricingData: PricingPlan[] = [
 import React from 'react';
 import Link from 'next/link';
 
-// 💡 เพิ่มการ Import Header และ Footer
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-
-// 💡 ใช้ Absolute Import สำหรับ FAQItem
 import FAQItem from '@/components/FAQItem';
 
 const faqData = [
   {
-    question: "เอกสารนี้ใช้ยื่นวีซ่าได้จริงไหม?",
-    answer: "เอกสารของเราเป็น 'เอกสารจำลอง' (Mock/Demo Document) ที่ออกแบบมาให้มีรูปแบบคล้ายกับการจองจริง ซึ่งใช้สำหรับแสดงหลักฐานการเดินทางและการเข้าพักตามข้อกำหนดของสถานทูตในการยื่นคำร้องขอวีซ่าเท่านั้น **ไม่รับประกันการอนุมัติวีซ่า** และไม่สามารถใช้เพื่อการเดินทางจริงได้",
+    question: 'เอกสารนี้ใช้ยื่นวีซ่าได้จริงไหม?',
+    answer:
+      'เอกสารของเราเป็นเอกสารที่ออกแบบให้มีรูปแบบคล้ายกับการจองจริง ใช้สำหรับแสดงหลักฐานการเดินทางและการเข้าพักตามข้อกำหนดของสถานทูตในการยื่นคำร้องขอวีซ่าเท่านั้น **ไม่รับประกันการอนุมัติวีซ่า** และไม่สามารถใช้เพื่อการเดินทางจริงได้',
   },
   {
-    question: "ฉันสามารถใช้เอกสารนี้เดินทางจริงได้หรือไม่?",
-    answer: "ไม่ได้! โดยเด็ดขาด เอกสารนี้มี Watermark และข้อความกำกับชัดเจนว่าเป็น 'FOR VISA ONLY - NOT A REAL BOOKING' หากนำไปใช้เพื่อการเดินทางจริงอาจส่งผลให้ถูกปฏิเสธการเดินทางและมีปัญหาทางกฎหมายได้",
+    question: 'ฉันสามารถใช้เอกสารนี้เดินทางจริงได้หรือไม่?',
+    answer:
+      "ไม่ได้! โดยเด็ดขาด เอกสารนี้มี Watermark และข้อความกำกับชัดเจนว่าเป็น 'FOR VISA ONLY - NOT A REAL BOOKING' หากนำไปใช้เพื่อการเดินทางจริงอาจส่งผลให้ถูกปฏิเสธการเดินทางและมีปัญหาทางกฎหมายได้",
   },
   {
-    question: "เอกสารรองรับวีซ่าประเทศไหนบ้าง?",
-    answer: "เราออกแบบให้เอกสารเป็นไปตามมาตรฐานสากลที่ใช้ได้กับวีซ่าเกือบทุกประเภท เช่น Schengen, UK, US, Canada, Japan และอื่น ๆ โดยหลักการแล้ว สถานทูตส่วนใหญ่ต้องการแค่หลักฐานแสดงแผนการเดินทางเท่านั้น",
+    question: 'เอกสารรองรับวีซ่าประเทศไหนบ้าง?',
+    answer:
+      'เราออกแบบให้เอกสารเป็นไปตามมาตรฐานสากลที่ใช้ได้กับวีซ่าเกือบทุกประเภท เช่น Schengen, UK, US, Canada, Japan และอื่น ๆ โดยหลักการแล้ว สถานทูตส่วนใหญ่ต้องการแค่หลักฐานแสดงแผนการเดินทางเท่านั้น',
   },
   {
-    question: "ใช้เวลานานเท่าไหร่ในการสร้างเอกสาร?",
-    answer: "หลังจากที่คุณชำระเงินและให้ข้อมูลครบถ้วน ทีมงานของเราจะดำเนินการสร้างและจัดส่งไฟล์ PDF ให้คุณทางอีเมลภายใน **1-2 ชั่วโมง** (ในช่วงเวลาทำการ) หรือไม่เกิน 4 ชั่วโมงในกรณีที่มีคำสั่งซื้อหนาแน่น",
+    question: 'ใช้เวลานานเท่าไหร่ในการสร้างเอกสาร?',
+    answer:
+      'หลังจากที่คุณชำระเงินและให้ข้อมูลครบถ้วน ทีมงานของเราจะดำเนินการสร้างและจัดส่งไฟล์ PDF ให้คุณทางอีเมลภายใน **1-2 ชั่วโมง** (ในช่วงเวลาทำการ) หรือไม่เกิน 4 ชั่วโมงในกรณีที่มีคำสั่งซื้อหนาแน่น',
   },
   {
-    question: "ถ้าข้อมูลผิดพลาด สามารถแก้ไขได้หรือไม่?",
-    answer: "ได้ครับ! ทุกแพ็กเกจมีการรับประกันการแก้ไขข้อมูลฟรีตามจำนวนครั้งที่ระบุในตารางราคา กรุณาตรวจสอบข้อมูลให้ถี่ถ้วนก่อนส่ง เพื่อลดความล่าช้าในการสร้างเอกสาร",
+    question: 'ถ้าข้อมูลผิดพลาด สามารถแก้ไขได้หรือไม่?',
 
 ```
 
@@ -269,10 +272,19 @@ const faqData = [
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { Mail, Send, CheckCircle2, AlertTriangle, Phone, MapPin } from 'lucide-react';
+import {
+  Mail,
+  Send,
+  CheckCircle2,
+  AlertTriangle,
+  Phone,
+  MapPin,
+  Facebook,
+  MessageSquare,
+} from 'lucide-react';
+import Header from '@/components/Header';
+import Footer from '@/components/Footer';
 
-// 💡 แก้ไข: ใช้ declare const เพื่อบอกให้ TypeScript รู้จักฟังก์ชัน Global ของ Firebase
-// ซึ่งจะช่วยให้ Build Process ผ่านไปได้โดยไม่มี Type Error เรื่อง Module Not Found
 declare const initializeApp: (config: any) => any;
 declare const getAuth: (app: any) => any;
 declare const signInAnonymously: (auth: any) => any;
@@ -282,19 +294,10 @@ declare const collection: (db: any, path: string) => any;
 declare const addDoc: (collectionRef: any, data: any) => Promise<void>;
 declare const setLogLevel: (level: 'debug' | 'error' | 'silent') => void;
 
-// 💡 Component Imports (Absolute Paths)
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
-
-// Global variables (mocked/provided by environment)
 declare const __app_id: string | undefined;
 declare const __firebase_config: string | undefined;
-declare const __initial_auth_token: string | undefined;
 
-// --- Firebase Initialization and Submission Logic ---
 let db: any;
-let auth: any;
-let userId: string | null = null;
 
 ```
 
@@ -305,33 +308,33 @@ let userId: string | null = null;
 import './globals.css';
 import { Inter } from 'next/font/google';
 import type { Metadata } from 'next';
+import Widget from '@/components/Widget'; // ✅ Import Widget
 
-// กำหนดและโหลด Font Inter
+// โหลด Font Inter
 const inter = Inter({ subsets: ['latin'] });
 
-// กำหนด Metadata สำหรับเว็บไซต์ (SEO)
+// กำหนด Metadata สำหรับ SEO
 export const metadata: Metadata = {
   title: {
     default: 'Visa-Ready: เอกสารวีซ่าพร้อมยื่น | Flight & Hotel Itinerary',
     template: '%s | Visa-Ready',
   },
-  description: 'สร้างตั๋วเครื่องบินและโรงแรมจำลองสำหรับการยื่นวีซ่าเชงเก้น ญี่ปุ่น หรือประเทศอื่น ๆ ได้อย่างรวดเร็ว แม่นยำ และน่าเชื่อถือ',
-  keywords: ['วีซ่า', 'เชงเก้น', 'ตั๋วเครื่องบินจำลอง', 'จองโรงแรมจำลอง', 'Visa application documents', 'Itinerary'],
+  description:
+    'สร้างตั๋วเครื่องบินและโรงแรมสำหรับการยื่นวีซ่าเชงเก้น ญี่ปุ่น สหรัฐอเมริกา และประเทศอื่น ๆ ได้อย่างรวดเร็ว แม่นยำ และน่าเชื่อถือ',
+  keywords: [
+    'วีซ่า',
+    'เชงเก้น',
+    'ตั๋วเครื่องบิน',
+    'จองโรงแรม',
+    'Visa application documents',
+    'Itinerary',
+  ],
   openGraph: {
     title: 'Visa-Ready: เอกสารวีซ่าพร้อมยื่น',
     description: 'สร้างเอกสารสำหรับการยื่นวีซ่าที่เชื่อถือได้',
-    url: 'https://visaready.com', // เปลี่ยนเป็น URL จริง
+    url: 'https://visaready.com', // TODO: เปลี่ยนเป็น URL จริง
     siteName: 'Visa-Ready',
     locale: 'th_TH',
-    type: 'website',
-  },
-};
-
-// Root Layout Component
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
 
 ```
 
@@ -345,30 +348,30 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import Hero from '@/components/Hero';
 import ServiceCard from '@/components/ServiceCard';
-import Review from '@/components/Review';
+import ReviewSlider from '@/components/ReviewSlider';
 import About from '@/components/About';
 
 import { Plane, Hotel, PlaneTakeoff, type LucideProps } from 'lucide-react';
 import type { ForwardRefExoticComponent, RefAttributes } from 'react';
 
-// Type สำหรับ Icon Component
-type LucideIconType = ForwardRefExoticComponent<Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>>;
+/* =============================
+   Types
+============================= */
+type LucideIconType = ForwardRefExoticComponent<
+  Omit<LucideProps, 'ref'> & RefAttributes<SVGSVGElement>
+>;
 
-// ข้อมูลจำลองสำหรับส่วน Services ในหน้า Homepage
 interface ServiceItem {
-    id: number;
-    title: string;
-    description: string;
-    icon: LucideIconType;
-    linkHref: string; // สำคัญ: ต้องกำหนดค่าที่นี่เพื่อป้องกัน Runtime Error
-    priceText: string;
-    isPopular: boolean;
+  id: number;
+  title: string;
+  description: string;
+  icon: LucideIconType;
+  linkHref: string;
+  priceText: string;
+  isPopular: boolean;
 }
 
-const homeServicesData: ServiceItem[] = [
-    {
-        id: 1,
-        title: "ตั๋วเครื่องบินจำลอง (Flight Itinerary)",
+/* =============================
 
 ```
 
@@ -575,22 +578,22 @@ export default function LetterServicePage() {
 
       <main className="flex-grow py-12 px-4">
         <div className="max-w-4xl mx-auto">
+          {/* Header Section */}
           <div className="text-center mb-10">
             <Mail className="w-12 h-12 text-blue-600 mx-auto mb-3" />
-            <h1 className="text-3xl font-bold text-gray-900 mb-2">บริการเขียนจดหมายแนะนำตัวยื่นวีซ่า (Cover Letter)</h1>
-            <p className="text-lg text-gray-600">สร้างจดหมายที่ชัดเจนและเป็นทางการเพื่อสนับสนุนคำร้องขอวีซ่าของคุณ</p>
+            <h1 className="text-3xl font-bold text-gray-900 mb-2">
+              บริการเขียนจดหมายแนะนำตัวยื่นวีซ่า (Cover Letter)
+            </h1>
+            <p className="text-lg text-gray-600">
+              สร้างจดหมายที่ชัดเจนและเป็นทางการเพื่อสนับสนุนคำร้องขอวีซ่าของคุณ
+            </p>
           </div>
 
+          {/* Main Content */}
           <div className="bg-white p-8 rounded-xl shadow-2xl border border-blue-200">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               {/* Input/Form Section (Placeholder) */}
               <div>
-                <h2 className="text-xl font-semibold text-gray-800 mb-4 border-b pb-2 flex items-center">
-                  <FileText className="w-5 h-5 mr-2 text-red-500" />
-                  ข้อมูลสำหรับเขียนจดหมาย
-                </h2>
-                <div className="space-y-4">
-                  <div className="p-4 bg-yellow-50 border border-yellow-200 rounded-lg">
 
 ```
 
@@ -619,15 +622,15 @@ export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 10);
-    };
+    const handleScroll = () => setIsScrolled(window.scrollY > 10);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   const toggleMobileMenu = () => setIsMobileMenuOpen((prev) => !prev);
 
+  return (
+    <header
 
 ```
 
@@ -643,8 +646,8 @@ const footerLinks = [
   {
     title: 'บริการของเรา',
     links: [
-      { label: 'สร้างตั๋วเครื่องบินจำลอง', href: '/services#flight' },
-      { label: 'สร้างการจองโรงแรมจำลอง', href: '/services#hotel' },
+      { label: 'สร้างตั๋วเครื่องบินสำหรับยื่นวีซ่า', href: '/services#flight' },
+      { label: 'สร้างการจองโรงแรมสำหรับยื่นวีซ่า', href: '/services#hotel' },
       { label: 'แพ็กเกจคู่', href: '/pricing' },
       { label: 'ตัวอย่างเอกสาร (PDF)', href: '/samples' },
     ],
@@ -678,30 +681,30 @@ import Link from 'next/link';
 import { ArrowRight, type LucideProps } from 'lucide-react';
 import type { ForwardRefExoticComponent, RefAttributes } from 'react';
 
-// Type สำหรับ Icon Component จาก Lucide
-type LucideIconType = ForwardRefExoticComponent<Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>>;
+/* =============================
+   Types
+============================= */
+type LucideIconType = ForwardRefExoticComponent<
+  Omit<LucideProps, 'ref'> & RefAttributes<SVGSVGElement>
+>;
 
 interface ServiceCardProps {
-    title: string;
-    description: string;
-    icon: LucideIconType;
-    linkHref: string; 
-    priceText: string;
-    isPopular?: boolean;
+  title: string;
+  description: string;
+  icon: LucideIconType;
+  linkHref: string;
+  priceText: string;
+  isPopular?: boolean;
 }
 
-const ServiceCard: React.FC<ServiceCardProps> = ({ 
-    title, 
-    description, 
-    icon: Icon, 
-    linkHref, 
-    priceText,
-    isPopular = false,
-}) => {
-    // ใช้ Fallback URL หาก linkHref เป็น undefined หรือเป็นค่า falsy
-    const effectiveLinkHref = linkHref || '/services'; 
-    
-    // แจ้งเตือนใน Console หาก Prop สำคัญขาดหายไป (เพื่อช่วย Debug ข้อมูลต้นทาง)
+/* =============================
+   Component
+============================= */
+const ServiceCard: React.FC<ServiceCardProps> = ({
+  title,
+  description,
+  icon: Icon,
+  linkHref,
 
 ```
 
@@ -712,33 +715,33 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
 // components/PricingCard.tsx
 import React from 'react';
 import Link from 'next/link';
-import { CheckCircle, type LucideProps } from 'lucide-react';
-import type { ForwardRefExoticComponent, RefAttributes } from 'react';
-
-// Type สำหรับ Icon Component จาก Lucide
-type LucideIconType = ForwardRefExoticComponent<Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>>;
+import { CheckCircle } from 'lucide-react';
 
 interface PricingCardProps {
-    title: string;
-    description: string;
-    price: string;
-    features: string[];
-    linkHref: string; 
-    buttonText: string;
-    isRecommended?: boolean;
+  title: string;
+  description: string;
+  price: number;
+  currency?: 'THB' | 'USD' | 'EUR';
+  features: string[];
+  linkHref?: string;
+  buttonText: string;
+  isRecommended?: boolean;
 }
 
-const PricingCard: React.FC<PricingCardProps> = ({ 
-    title, 
-    description, 
-    price, 
-    features, 
-    linkHref, 
-    buttonText,
-    isRecommended = false,
-}) => {
-    // ใช้ Fallback URL หาก linkHref เป็น undefined หรือเป็นค่า falsy
-    const effectiveLinkHref = linkHref || '/checkout'; 
+const formatPrice = (price: number, currency: string) => {
+  switch (currency) {
+    case 'USD':
+      return `$${price}`;
+    case 'EUR':
+      return `€${price}`;
+    case 'THB':
+    default:
+      return `฿${price}`;
+  }
+};
+
+const PricingCard: React.FC<PricingCardProps> = ({
+  title,
 
 ```
 
@@ -759,23 +762,23 @@ interface FAQItemProps {
 
 export default function FAQItem({ question, answer }: FAQItemProps) {
   const [isOpen, setIsOpen] = useState(false);
-
-  const toggleOpen = () => setIsOpen(!isOpen);
+  const contentId = `faq-content-${question.replace(/\s+/g, '-')}`;
 
   return (
-    <div className="border border-gray-200 rounded-xl overflow-hidden shadow-md">
+    <div className="border border-gray-200 rounded-md shadow-sm bg-white">
+      {/* Toggle Button */}
       <button
-        onClick={toggleOpen}
-        className="flex justify-between items-center w-full p-5 text-left bg-white hover:bg-gray-50 transition duration-150"
+        onClick={() => setIsOpen(!isOpen)}
+        className="flex justify-between items-center w-full p-5 text-left 
+                   focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-green 
+                   hover:bg-gray-50 transition-colors duration-200"
         aria-expanded={isOpen}
+        aria-controls={contentId}
       >
-        <span className="text-lg font-semibold text-gray-800">{question}</span>
-        <ChevronDown 
-          className={`w-6 h-6 text-primary-green transition-transform duration-300 ${isOpen ? 'transform rotate-180' : ''}`}
-        />
-      </button>
-      
-      <div
+        <span className="text-base md:text-lg font-semibold text-gray-900">
+          {question}
+        </span>
+        <ChevronDown
 
 ```
 
@@ -826,30 +829,30 @@ import { Plane, ArrowRight } from 'lucide-react';
 
 export default function Hero() {
   return (
-    <section className="text-center py-20 md:py-32 bg-bg-light border-b border-gray-200">
-      <div className="container mx-auto px-4 max-w-4xl">
-        <h1 className="text-4xl md:text-5xl font-extrabold text-gray-900 leading-tight mb-4">
-          สร้างตั๋วเครื่องบินและโรงแรม
-          <span className="text-primary-green"> สำหรับยื่นวีซ่า</span>
+    <section
+      className="relative w-full h-[55vh] md:h-[65vh] overflow-hidden border-b border-gray-200 bg-center bg-cover"
+      style={{ backgroundImage: "url('/images/Hero.jpg')" }}
+    >
+      {/* Overlay */}
+      <div className="absolute inset-0 bg-black/40" />
+
+      {/* Content */}
+      <div className="relative z-10 flex flex-col justify-center h-full px-6 md:px-12 max-w-6xl mx-auto text-white">
+        <h1 className="text-3xl md:text-5xl font-bold leading-tight mb-4">
+          สร้างเอกสารตั๋วเครื่องบินและโรงแรม
+          <span className="block text-brand-gold">
+            สำหรับการยื่นวีซ่าอย่างมั่นใจ
+          </span>
         </h1>
 
-        <p className="text-lg md:text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
-          เอกสารจำลองคุณภาพสูง ออกแบบมาโดยเฉพาะเพื่อวัตถุประสงค์ในการยื่นคำร้องขอวีซ่า
-          (Schengen, UK, US และอื่น ๆ) ด้วยความน่าเชื่อถือระดับมืออาชีพ
+        <p className="text-base md:text-xl text-gray-100 mb-6 leading-relaxed max-w-2xl">
+          เอกสารคุณภาพสูงที่ออกแบบตามมาตรฐานสถานทูต รองรับ Schengen, UK, US และอื่น ๆ
+          พร้อมดาวน์โหลดในรูปแบบ PDF ภายในไม่กี่ชั่วโมง
         </p>
 
-        {/* CTA */}
         <Link
           href="/services"
-          className="inline-flex items-center justify-center text-lg btn-secondary shadow-2xl transition duration-300"
-        >
-          <Plane className="w-5 h-5 mr-2" />
-          สร้างเอกสารของคุณทันที!
-          <ArrowRight className="w-5 h-5 ml-2" />
-        </Link>
-
-        {/* Disclaimer */}
-        <div className="bg-yellow-50 border-l-4 border-accent-gold text-gray-800 p-4 mt-8 rounded-lg shadow-inner max-w-xs mx-auto">
+          className="inline-flex items-center px-6 py-3 bg-brand-green text-white text-base font-semibold rounded-md shadow-md hover:bg-emerald-700 transition-colors focus-visible:ring-2 focus-visible:ring-brand-gold w-fit"
 
 ```
 
@@ -880,13 +883,13 @@ const FEATURES: FeatureItem[] = [
     icon: ShieldCheck,
     title: 'ความน่าเชื่อถือสูง',
     description:
-      'เอกสารของเราถูกออกแบบตามรูปแบบมาตรฐานสากลที่สถานทูตเชงเก้นยอมรับ ทำให้มั่นใจได้ในขั้นตอนการยื่นคำร้อง',
+      'เอกสารของเราถูกออกแบบตามมาตรฐานที่สถานทูตยอมรับ ทำให้มั่นใจได้ในขั้นตอนการยื่นคำร้อง',
   },
   {
     icon: Calendar,
     title: 'วันเวลาที่ยืดหยุ่น',
     description:
-      'สามารถระบุวันที่เดินทางที่ต้องการได้อย่างแม่นยำ ทำให้แผนการเดินทางของคุณสอดคล้องกับแผนการยื่นวีซ่า',
+      'สามารถกำหนดวันเดินทางที่ต้องการได้อย่างแม่นยำ เพื่อให้สอดคล้องกับแผนการยื่นวีซ่าของคุณ',
 
 ```
 
@@ -898,32 +901,106 @@ const FEATURES: FeatureItem[] = [
 import React from 'react';
 import { Quote, Star } from 'lucide-react';
 
-// Props Structure matching the usage in app/page.tsx
 interface ReviewProps {
   text: string;
   author: string;
-  rating: number; // Expected to be 1 to 5
-  visaType?: string; // Optional field, not currently used in app/page.tsx but good for expansion
+  rating: number; // 1–5
+  visaType?: string;
 }
 
 const Review: React.FC<ReviewProps> = ({ text, author, rating, visaType }) => {
-  // Ensure rating is between 0 and 5
   const normalizedRating = Math.max(0, Math.min(5, rating));
 
   return (
-    // This is the individual review card component.
-    // ใช้ Tailwind classes เพื่อความสวยงามและ responsive
-    <div className="bg-white p-6 md:p-8 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 transform border-t-4 border-blue-500/80 flex flex-col h-full">
-      <Quote className="w-8 h-8 text-blue-600 mb-4" />
-      
+    <div className="bg-white p-6 md:p-8 rounded-xl shadow-md border border-gray-200 flex flex-col h-full hover:shadow-lg transition-shadow duration-200">
+      {/* Quote Icon */}
+      <div className="flex items-center mb-4">
+        <Quote className="w-7 h-7 text-brand-green" aria-hidden="true" />
+        <span className="ml-2 text-sm text-gray-400">รีวิวจากลูกค้า</span>
+      </div>
+
       {/* Review Text */}
-      <p className="text-gray-700 italic mb-6 flex-grow leading-relaxed">
-        "{text}"
+      <p className="text-gray-700 text-base md:text-lg mb-6 flex-grow leading-relaxed italic">
+        “{text}”
       </p>
-      
-      <div className="mt-auto">
-        {/* Rating Stars */}
-        <div className="flex text-yellow-500 mb-2">
+
+      {/* Footer Section */}
+      <div className="mt-auto space-y-3">
+        {/* Rating */}
+
+```
+
+
+### `./components/ReviewSlider.tsx`
+
+```js
+// components/ReviewSlider.tsx
+'use client';
+
+import React from 'react';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Autoplay, Pagination } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/pagination';
+
+import Review from './Review';
+import { reviews } from '@/mock/reviews';
+
+export default function ReviewSlider() {
+  return (
+    <div className="max-w-6xl mx-auto px-4">
+      {/* Section Header */}
+      <div className="text-center mb-12">
+        <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
+          เสียงตอบรับจากลูกค้า
+        </h2>
+        <p className="mt-4 text-lg text-gray-600 max-w-2xl mx-auto">
+          ความพึงพอใจจากผู้ใช้จริงที่เลือกใช้บริการ VisaReady Docs
+        </p>
+      </div>
+
+      {/* Swiper Slider */}
+      <Swiper
+        modules={[Autoplay, Pagination]}
+        spaceBetween={32}
+        slidesPerView={1}
+
+```
+
+
+### `./components/Widget.tsx`
+
+```js
+// components/Widget.tsx
+'use client';
+
+import { useState } from 'react';
+import { Plane, Facebook, Mail, MessageSquare } from 'lucide-react';
+
+export default function Widget() {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <div className="fixed bottom-6 right-6 z-50">
+      {/* Floating Button */}
+      <button
+        onClick={() => setOpen(!open)}
+        aria-label="Toggle contact widget"
+        className="w-14 h-14 flex items-center justify-center rounded-full bg-brand-green text-white shadow-lg hover:bg-emerald-700 transition-transform duration-200 focus-visible:ring-2 focus-visible:ring-brand-gold"
+      >
+        <Plane className="w-6 h-6" />
+      </button>
+
+      {/* Expandable Menu */}
+      <div
+        className={`mt-4 space-y-3 flex flex-col items-end transition-all duration-300 transform ${
+          open
+            ? 'opacity-100 translate-y-0 scale-100'
+            : 'opacity-0 translate-y-2 scale-95 pointer-events-none'
+        }`}
+      >
+        <a
+          href="https://www.facebook.com/profile.php?id=61584701997780"
 
 ```
 
@@ -1077,8 +1154,8 @@ export async function generateDocumentPDF(data: DocumentData): Promise<string> {
 
 
 ---
-> **Total JS/TS files:** 27
-> **Files previewed:** 27
+> **Total JS/TS files:** 29
+> **Files previewed:** 29
 > **Files with Role/Auth checks:** 0
 > **Files using Absolute Imports:** 0
 
@@ -1121,9 +1198,9 @@ You are an expert AI coding assistant. Your task is to analyze the provided Proj
 
 | Metric | Total | Covered | Coverage % | Weight |
 | :--- | :---: | :---: | :---: | :---: |
-| **Code Preview** | 27 | 27 | 100% | 2 |
-| **Role/Auth Checks** | 27 | 0 | 0% | 3 |
-| **Absolute Imports** | 27 | 0 | 0% | 1 |
+| **Code Preview** | 29 | 29 | 100% | 2 |
+| **Role/Auth Checks** | 29 | 0 | 0% | 3 |
+| **Absolute Imports** | 29 | 0 | 0% | 1 |
 | **Valid JSON** | 0 | 0 | 100% | 2 |
 | **Readable CSV** | 0 | 0 | 100% | 1 |
 

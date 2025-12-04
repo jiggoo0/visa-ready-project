@@ -97,7 +97,9 @@ export default function Footer() {
           </p>
           <address className="flex space-x-4 not-italic">
             <a
-              href="#"
+              href="https://www.facebook.com/profile.php?id=61584701997780"
+              target="_blank"
+              rel="noopener noreferrer"
               aria-label="Facebook"
               className="text-gray-400 hover:text-brand-green transition-colors duration-150 focus-visible:ring-2 focus-visible:ring-brand-green rounded"
             >
@@ -116,6 +118,23 @@ export default function Footer() {
               className="text-gray-400 hover:text-brand-green transition-colors duration-150 focus-visible:ring-2 focus-visible:ring-brand-green rounded"
             >
               <Instagram className="w-6 h-6" />
+            </a>
+            <a
+              href="https://lin.ee/UKkHyTL"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Line Office"
+              className="text-gray-400 hover:text-brand-green transition-colors duration-150 focus-visible:ring-2 focus-visible:ring-brand-green rounded flex items-center"
+            >
+              {/* Line Icon SVG */}
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 512 512"
+                className="w-6 h-6"
+                fill="currentColor"
+              >
+                <path d="M256 0C114.84 0 0 104.98 0 234.67c0 65.96 34.47 124.44 89.28 165.43V512l95.55-52.56c24.78 6.81 51.06 10.22 78.17 10.22 141.16 0 256-104.98 256-234.67S397.16 0 256 0zm69.92 314.36c-4.63 13.91-21.94 24.42-45.32 28.56-11.05 2.01-21.5 3.03-31.54 3.03-18.85 0-32.06-3.73-38.61-11.18-6.07-6.86-7.54-16.09-4.36-27.84 2.88-10.87 10.34-22.36 22.86-34.44 15.27-15.09 25.92-25.77 31.42-32.03 3.55-3.97 5.03-6.8 4.42-8.51-.73-2.07-3.04-3.12-6.84-3.12-4.95 0-14.42 2.05-27.39 6.14-12.81 4.02-33.85 11.18-63.5 21.49l-10.87-13.36c28.69-10.37 49.3-17.99 61.14-22.88 22.34-7.48 39.37-11.19 50.73-11.19 24.45 0 36.67 10.57 36.67 31.63 0 6.92-2.05 14.58-6.1 23.87-2.82 6.81-13.38 18.48-31.66 34.97-14.23 13.08-22.59 23.35-25.07 30.84-1.43 4.17-.73 7.38 2.08 9.62 2.41 2.03 6.17 3.03 11.27 3.03 7.53 0 20.12-2.41 37.63-7.23 17.06-4.61 40.42-11.18 70.06-19.7l10.93 13.45c-27.27 8.42-49.48 15.05-66.06 19.86-13.13 3.78-23.49 5.67-31.05 5.67-9.87.01-16.63-2.65-20.34-7.89z" />
+              </svg>
             </a>
           </address>
         </div>
