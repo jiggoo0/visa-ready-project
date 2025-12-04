@@ -1,4 +1,6 @@
 // app/page.tsx
+'use client';
+
 import React from 'react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
@@ -7,66 +9,15 @@ import ServiceCard from '@/components/ServiceCard';
 import ReviewSlider from '@/components/ReviewSlider';
 import About from '@/components/About';
 
-import { Plane, Hotel, PlaneTakeoff, type LucideProps } from 'lucide-react';
-import type { ForwardRefExoticComponent, RefAttributes } from 'react';
-
-/* =============================
-   Types
-============================= */
-type LucideIconType = ForwardRefExoticComponent<
-  Omit<LucideProps, 'ref'> & RefAttributes<SVGSVGElement>
->;
-
-interface ServiceItem {
-  id: number;
-  title: string;
-  description: string;
-  icon: LucideIconType;
-  linkHref: string;
-  priceText: string;
-  isPopular: boolean;
-}
-
-/* =============================
-   Data
-============================= */
-const homeServicesData: ServiceItem[] = [
-  {
-    id: 1,
-    title: 'ตั๋วเครื่องบิน (Flight Itinerary)',
-    description:
-      'เอกสารยืนยันการเดินทางสำหรับวีซ่าเชงเก้นและประเทศอื่น ๆ ที่ต้องการหลักฐานการบิน',
-    icon: Plane,
-    linkHref: '/flight-doc-preview',
-    priceText: '฿ 299',
-    isPopular: false,
-  },
-  {
-    id: 2,
-    title: 'การจองโรงแรม (Hotel Booking)',
-    description:
-      'สร้างเอกสารการจองที่พักที่น่าเชื่อถือตลอดการเดินทางของคุณ โดยไม่ต้องเสียค่าใช้จ่ายจริง',
-    icon: Hotel,
-    linkHref: '/visa-doc-preview',
-    priceText: '฿ 299',
-    isPopular: false,
-  },
-  {
-    id: 3,
-    title: 'แพ็กเกจ Flight + Hotel',
-    description:
-      'ชุดเอกสารที่ครบถ้วนและประหยัดกว่า เหมาะสำหรับการยื่นวีซ่าท่องเที่ยวในยุโรป',
-    icon: PlaneTakeoff,
-    linkHref: '/visa-doc-preview',
-    priceText: '฿ 499',
-    isPopular: true,
-  },
-];
+import { servicesData } from '@/data/servicesData'; // ✅ ใช้ data จากไฟล์แยก
 
 /* =============================
    Page Component
 ============================= */
 const HomePage: React.FC = () => {
+  // เลือกเฉพาะบริการที่ต้องการแสดงบนหน้าแรก (เช่น 3 รายการแรก)
+  const homeServicesData = servicesData.slice(0, 3);
+
   return (
     <div className="min-h-screen flex flex-col">
       <Header />

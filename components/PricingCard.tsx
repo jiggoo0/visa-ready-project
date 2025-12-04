@@ -1,19 +1,30 @@
 // components/PricingCard.tsx
 import React from 'react';
 import Link from 'next/link';
-import { CheckCircle } from 'lucide-react';
+import { CheckCircle, XCircle } from 'lucide-react';
+
+/* =============================
+   Types
+============================= */
+interface FeatureItem {
+  name: string;
+  isAvailable: boolean;
+}
 
 interface PricingCardProps {
   title: string;
   description: string;
   price: number;
   currency?: 'THB' | 'USD' | 'EUR';
-  features: string[];
+  features: FeatureItem[];   // ✅ ใช้ FeatureItem[] แทน string[]
   linkHref?: string;
   buttonText: string;
   isRecommended?: boolean;
 }
 
+/* =============================
+   Helper
+============================= */
 const formatPrice = (price: number, currency: string) => {
   switch (currency) {
     case 'USD':
@@ -26,6 +37,9 @@ const formatPrice = (price: number, currency: string) => {
   }
 };
 
+/* =============================
+   Component
+============================= */
 const PricingCard: React.FC<PricingCardProps> = ({
   title,
   description,
@@ -69,11 +83,21 @@ const PricingCard: React.FC<PricingCardProps> = ({
       </div>
 
       {/* Features */}
-      <ul className="space-y-3 mb-8">
+      <ul className="space-y-3 mb-8 text-left">
         {features.map((feature, index) => (
-          <li key={index} className="flex items-start">
-            <CheckCircle className="w-5 h-5 flex-shrink-0 mr-2 text-brand-green" />
-            <span className="text-sm text-gray-700">{feature}</span>
+          <li key={index} className="flex items-center">
+            {feature.isAvailable ? (
+              <CheckCircle className="w-5 h-5 flex-shrink-0 mr-2 text-green-600" />
+            ) : (
+              <XCircle className="w-5 h-5 flex-shrink-0 mr-2 text-red-500" />
+            )}
+            <span
+              className={`text-sm ${
+                feature.isAvailable ? 'text-gray-800' : 'text-gray-400 line-through'
+              }`}
+            >
+              {feature.name}
+            </span>
           </li>
         ))}
       </ul>

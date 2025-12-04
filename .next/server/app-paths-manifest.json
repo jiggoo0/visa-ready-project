@@ -9,8 +9,8 @@
   "/how-to/page": "app/how-to/page.js",
   "/letter-service/page": "app/letter-service/page.js",
   "/page": "app/page.js",
+  "/pricing/page": "app/pricing/page.js",
   "/samples/page": "app/samples/page.js",
   "/services/page": "app/services/page.js",
-  "/visa-doc-preview/page": "app/visa-doc-preview/page.js",
-  "/pricing/page": "app/pricing/page.js"
+  "/visa-doc-preview/page": "app/visa-doc-preview/page.js"
 }

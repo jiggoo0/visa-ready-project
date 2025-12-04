@@ -5,69 +5,7 @@ import React from 'react';
 import ServiceCard from '@/components/ServiceCard';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-
-import { Plane, Hotel, PlaneTakeoff, BookOpenCheck } from 'lucide-react';
-import type { LucideProps } from 'lucide-react';
-import type { ForwardRefExoticComponent, RefAttributes } from 'react';
-
-// Type สำหรับ Icon Component (LucideIcon)
-type LucideIconType = ForwardRefExoticComponent<
-  Omit<LucideProps, 'ref'> & RefAttributes<SVGSVGElement>
->;
-
-// ข้อมูลจำลองสำหรับบริการ
-interface ServiceItem {
-  id: number;
-  title: string;
-  description: string;
-  icon: LucideIconType;
-  linkHref: string;
-  priceText: string;
-  isPopular: boolean;
-}
-
-const servicesData: ServiceItem[] = [
-  {
-    id: 1,
-    title: 'ตั๋วเครื่องบิน (Flight Itinerary)',
-    description:
-      'สร้างเอกสารยืนยันการเดินทางสำหรับการยื่นวีซ่าเชงเก้น วีซ่าญี่ปุ่น หรือประเทศอื่น ๆ ที่ต้องการหลักฐานการบิน',
-    icon: Plane,
-    linkHref: '/flight-doc-preview',
-    priceText: '฿ 299',
-    isPopular: true,
-  },
-  {
-    id: 2,
-    title: 'การจองโรงแรม (Hotel Booking)',
-    description:
-      'สร้างเอกสารการจองที่พักที่น่าเชื่อถือสำหรับการเดินทาง โดยไม่จำเป็นต้องชำระเงินจริง',
-    icon: Hotel,
-    linkHref: '/hotel-doc-preview',
-    priceText: '฿ 299',
-    isPopular: false,
-  },
-  {
-    id: 3,
-    title: 'แพ็กเกจ Flight + Hotel (Dual Package)',
-    description:
-      'ประหยัดกว่า! รับทั้งตั๋วเครื่องบินและการจองโรงแรมในราคารวม เหมาะสำหรับการยื่นวีซ่าเชงเก้น',
-    icon: PlaneTakeoff,
-    linkHref: '/dual-package-preview',
-    priceText: '฿ 499 (ประหยัด ฿ 99)',
-    isPopular: true,
-  },
-  {
-    id: 4,
-    title: 'จดหมายรับรองการเดินทาง (Cover Letter)',
-    description:
-      'สร้างจดหมายแนะนำตัวและรายละเอียดการเดินทางอย่างเป็นทางการ เพื่อยื่นประกอบเอกสารวีซ่า',
-    icon: BookOpenCheck,
-    linkHref: '/letter-service',
-    priceText: '฿ 350',
-    isPopular: false,
-  },
-];
+import { servicesData } from '@/data/servicesData'; // ✅ Import data
 
 const ServicesPage: React.FC = () => {
   return (

@@ -19,8 +19,12 @@
         "name": "next"
       }
     ],
+    "baseUrl": ".",                // ✅ ต้องเพิ่ม baseUrl
     "paths": {
-      "@/*": ["./*"]
+      "@/*": ["./*"],
+      "@/components/*": ["./components/*"],
+      "@/data/*": ["./data/*"],
+      "@/app/*": ["./app/*"]
     }
   },
   "include": [
@@ -28,7 +32,7 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    ".next/dev/types/**/*.ts"
+    "data/**/*.ts"
   ],
   "exclude": ["node_modules"]
 }
